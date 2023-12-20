@@ -4970,7 +4970,7 @@ type = 'inline',data = {
 if redis:get(bot_id..":start") then
 r = redis:get(bot_id..":start")
 else
-r ="*✻ اهلا بك عزيزي المواطن $ \n ✻ انا البوت اختصاصي حماية المجموعات \n ✻ حماية المجموعات من الكفار والمشركين 😂\n✻  ارفع البوت مشرف وراح يتفعل تلقائي .*"
+r ="*⌔ أهلاً بك عزيزي /n⌔ اختصاص البوت حماية المجموعات /n ⌔ اضف البوت الى مجموعتك . /n ⌔ ارفعه ادمن مشرف /n ⌔ ارفعه مشرف وارسل " تفعيل " ليتم تفعيل المجموعة .*"
 end
 return bot.sendText(msg.chat_id,msg.id,r,"md", true, false, false, false, reply_markup)
 end
@@ -8271,7 +8271,7 @@ end
 if text == 'بوت حذف' or text == 'رابط الحذف' or text == 'رابط حذف' or text == 'بوت الحذف' then
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
-{{text = '- Press here .',url="t.me/BI9BIBoT"}},
+{{text = '- Press here .',url="t.me/iOKBoT"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,'*- Bot delete accounts 🗑️ .*',"md", true, false, false, false, reply_markup)
@@ -8279,10 +8279,10 @@ end
 if text == 'همسه' or text == 'همسة' or text == 'بوت همسه' or text == 'بوت الهمسه' then
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
-{{text = '- hiss .',url="t.me/helUIbot"}},
+{{text = '- همسه .',url="t.me/MGQbot"}},
 }
 }
-bot.sendText(msg.chat_id,msg.id,'*- Bot hiss 🔐 .*',"md", true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id,'*- بوت الهمسات 🔐 .*',"md", true, false, false, false, reply_markup)
 end
 if text and text:match('^ذيع بالتثبيت (%d+)$') then
 local dedede = text:match('^ذيع بالتثبيت (%d+)$')
@@ -23738,7 +23738,7 @@ bot.sendText(msg.chat_id,msg.id,tttttt)
 redis:del(bot_id..":"..msg.sender_id.user_id..":lov_Botttuus"..msg.chat_id)
 end
 if text and redis:get(bot_id..":"..msg.sender_id.user_id..":krh_Bots"..msg.chat_id) == "sendkrhe" then
-num = {"😂 10","🤤 20","😢 30","😔 35","😒 75","🤩 34","😗 66","🤐 82","😪 23","😫 19","😛 55","😜 80","😲 63","😓 32","🙂 27","?? 89","😋 99","😁 98","😀 79","🤣 100","😣 8","🙄 3","😕 6","🤯 0",};
+num = {"😂 10","🤤 20","😢 30","😔 35","😒 75","🤩 34","😗 66","🤐 82","😪 23","😫 19","😛 55","😜 80","😲 63","😓 32","🙂 27","?? 89","😋 99","😁 98","😀 79","🤣 100","?? 8","🙄 3","😕 6","🤯 0",};
 sendnum = num[math.random(#num)]
 local tttttt = '- نسبه الكره : '..text..' '..sendnum..' %'
 bot.sendText(msg.chat_id,msg.id,tttttt) 
