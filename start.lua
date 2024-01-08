@@ -97,7 +97,7 @@ token=Token
 }
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
-namebot = redis:get(bot_id..":namebot") or " وايت"
+namebot = redis:get(bot_id..":namebot") or " تون"
 SudosS = {5413631898}
 Sudos = {sudoid,5413631898}
 ----------------------------------------------------------------------------------------------------
@@ -1748,7 +1748,7 @@ data = {
 {text = 'تحميل صوت', data = data.sender_user_id..'sound/'..id}, {text = 'تحميل فيديو', data = data.sender_user_id..'video/'..id}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = 't.me/WhiteDaeb'},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = 't.me/rsrrsrr'},
 },
 }
 }
@@ -1782,7 +1782,7 @@ local p = p:gsub("'","-")
 local p = p:gsub('"',"-") 
 bot.deleteMessages(chat_id,{[1]= msg_id})
 os.execute("yt-dlp "..link.." -f 251 -o '"..title..".mp3'")
-bot.sendAudio(chat_id,0,'./'..title..'.mp3',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@WhiteDaeb]","md",tostring(time),title,p) 
+bot.sendAudio(chat_id,0,'./'..title..'.mp3',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@rsrrsrr]","md",tostring(time),title,p) 
 sleep(2)
 os.remove(""..title..".mp3")
 else
@@ -1806,7 +1806,7 @@ local title = title:gsub("'","-")
 local title = title:gsub('"',"-") 
 bot.deleteMessages(chat_id,{[1]= msg_id})
 os.execute("yt-dlp "..link.." -f 18 -o '"..title..".mp4'")
-bot.sendVideo(chat_id,0,'./'..title..'.mp4',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@WhiteDaeb]","md") 
+bot.sendVideo(chat_id,0,'./'..title..'.mp4',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@rsrrsrr]","md") 
 sleep(4)
 os.remove(""..title..".mp4")
 else
@@ -2121,7 +2121,7 @@ if Text and Text:match('(%d+)/play_wheel') then
     local keyboard = {} 
     keyboard.inline_keyboard = {
     {
-    {text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+    {text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
     },
     }
     local msg_reply = msg_id/2097152/0.5
@@ -2196,7 +2196,7 @@ end
 if Text and Text:match('(%d+)/toptop') then
 local UserId = Text:match('(%d+)/toptop')
 if tonumber(data.sender_user_id) == tonumber(UserId) then
-local toptop = "- اهلين فيك في قوائم التوب\nللمزيد من التفاصيل - [@WhiteDaeb]\n"
+local toptop = "- اهلين فيك في قوائم التوب\nللمزيد من التفاصيل - [@rsrrsrr]\n"
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
@@ -2210,7 +2210,7 @@ data = {
 {text = 'اخفاء ', data = data.sender_user_id..'/delAmr'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -2281,7 +2281,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2356,7 +2356,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2434,7 +2434,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2507,7 +2507,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2592,7 +2592,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2606,12 +2606,12 @@ shakse = "طيبة"
 redis:set(bot_id.."shkse"..data.sender_user_id,shakse)
 cccall = redis:get(bot_id.."boobb"..data.sender_user_id)
 ccctype = redis:get(bot_id.."bbobb"..data.sender_user_id)
-msalm = "- وسوينا لك حساب في بنك وايت 🏦\n- وشحنالك 50 دينار 💵 هدية\n\n- رقم حسابك ↢ ( `"..cccall.."` )\n- نوع البطاقة ↢ ( "..ccctype.." )\n- فلوسك ↢ ( 50 دينار 💵 )\n- شخصيتك : طيبة 😇"
+msalm = "- وسوينا لك حساب في بنك تون 🏦\n- وشحنالك 50 دينار 💵 هدية\n\n- رقم حسابك ↢ ( `"..cccall.."` )\n- نوع البطاقة ↢ ( "..ccctype.." )\n- فلوسك ↢ ( 50 دينار 💵 )\n- شخصيتك : طيبة 😇"
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2625,12 +2625,12 @@ shakse = "شريرة"
 redis:set(bot_id.."shkse"..data.sender_user_id,shakse)
 cccall = redis:get(bot_id.."boobb"..data.sender_user_id)
 ccctype = redis:get(bot_id.."bbobb"..data.sender_user_id)
-msalm = "- وسوينا لك حساب في بنك وايت 🏦\n- وشحنالك 50 دينار 💵 هدية\n\n- رقم حسابك ↢ ( `"..cccall.."` )\n- نوع البطاقة ↢ ( "..ccctype.." )\n- فلوسك ↢ ( 50 دينار 💵 )\n- شخصيتك : شريرة 😈"
+msalm = "- وسوينا لك حساب في بنك تون 🏦\n- وشحنالك 50 دينار 💵 هدية\n\n- رقم حسابك ↢ ( `"..cccall.."` )\n- نوع البطاقة ↢ ( "..ccctype.." )\n- فلوسك ↢ ( 50 دينار 💵 )\n- شخصيتك : شريرة 😈"
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2668,7 +2668,7 @@ data = {
 {
 {text = 'شخصية طيبة 😇', data = data.sender_user_id..'/msalm'},{text = 'شخصية شريرة 😈', data = data.sender_user_id..'/shrer'},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 }
 }
 bot.editMessageText(chat_id,msg_id,ttshakse, 'md', true, false, reply_markup)
@@ -2706,7 +2706,7 @@ data = {
 {
 {text = 'شخصية طيبة 😇', data = data.sender_user_id..'/msalm'},{text = 'شخصية شريرة 😈', data = data.sender_user_id..'/shrer'},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 }
 }
 bot.editMessageText(chat_id,msg_id,ttshakse, 'md', true, false, reply_markup)
@@ -2717,7 +2717,7 @@ if Text and Text:match('(%d+)/express') then
 local UserId = Text:match('(%d+)/express')
 if tonumber(data.sender_user_id) == tonumber(UserId) then
 creditex = math.random(6000000000000000,6999999999999999);
-exprs = "وايت"
+exprs = "تون"
 balas = 50
 local ban = bot.getUser(data.sender_user_id)
 if ban.first_name then
@@ -2765,7 +2765,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2787,7 +2787,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2813,7 +2813,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2827,17 +2827,17 @@ local bain = bot.getUser(data.sender_user_id).first_name
 local Textinggt = {"1", "2️", "3",}
 local Descriptioont = Textinggt[math.random(#Textinggt)]
 if Descriptioont == "1" then
-baniusernamek = 'انت : ✂️\nوايت : ✂️\nالنتيجة : وايت ⚖️ '..bain..'\n'
+baniusernamek = 'انت : ✂️\nتون : ✂️\nالنتيجة : تون ⚖️ '..bain..'\n'
 elseif Descriptioont == "2" then
-baniusernamek = 'انت : ✂️\nوايت : 🪨️\nالنتيجة : 🏆 وايت 🏆\n'
+baniusernamek = 'انت : ✂️\nتون : 🪨️\nالنتيجة : 🏆 تون 🏆\n'
 else
-baniusernamek = 'انت : ✂️\nوايت : 📄️\nالنتيجة : 🏆 '..bain..' 🏆\n'
+baniusernamek = 'انت : ✂️\nتون : 📄️\nالنتيجة : 🏆 '..bain..' 🏆\n'
 end
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2851,17 +2851,17 @@ local bain = bot.getUser(data.sender_user_id).first_name
 local Textinggt = {"1", "2️", "3",}
 local Descriptioont = Textinggt[math.random(#Textinggt)]
 if Descriptioont == "1" then
-baniusernamek = 'انت : 📄️\nوايت : ✂️\nالنتيجة : 🏆 وايت 🏆\n'
+baniusernamek = 'انت : 📄️\nتون : ✂️\nالنتيجة : 🏆 تون 🏆\n'
 elseif Descriptioont == "2" then
-baniusernamek = 'انت : 📄\nوايت : 🪨️\nالنتيجة : 🏆 '..bain..' 🏆\n'
+baniusernamek = 'انت : 📄\nتون : 🪨️\nالنتيجة : 🏆 '..bain..' 🏆\n'
 else
-baniusernamek = 'انت : 📄️\nوايت : 📄️\nالنتيجة : وايت ⚖️ '..bain..'\n'
+baniusernamek = 'انت : 📄️\nتون : 📄️\nالنتيجة : تون ⚖️ '..bain..'\n'
 end
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2876,17 +2876,17 @@ local bain = bot.getUser(data.sender_user_id).first_name
 local Textinggt = {"1", "2️", "3",}
 local Descriptioont = Textinggt[math.random(#Textinggt)]
 if Descriptioont == "1" then
-baniusernamek = 'انت : 🪨️\nوايت : ✂️\nالنتيجة : 🏆 '..bain..' 🏆\n'
+baniusernamek = 'انت : 🪨️\nتون : ✂️\nالنتيجة : 🏆 '..bain..' 🏆\n'
 elseif Descriptioont == "2" then
-baniusernamek = 'انت : 🪨️\nوايت : 🪨️\nالنتيجة : وايت ⚖️ '..bain..'\n'
+baniusernamek = 'انت : 🪨️\nتون : 🪨️\nالنتيجة : تون ⚖️ '..bain..'\n'
 else
-baniusernamek = 'انت : 🪨️\nوايت : 📄️\nالنتيجة : 🏆 وايت 🏆\n'
+baniusernamek = 'انت : 🪨️\nتون : 📄️\nالنتيجة : 🏆 تون 🏆\n'
 end
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3151,7 +3151,7 @@ data = {
 {text = '‹ الغاء كتمه ›', data = data.sender_user_id..'unmute'..replyy}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3169,7 +3169,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3192,7 +3192,7 @@ data = {
 {text = '‹ الغاء حظره ›', data = data.sender_user_id..'unban'..replyy}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3211,7 +3211,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3233,7 +3233,7 @@ data = {
 {text = '‹ الغاء تقييده ›', data = data.sender_user_id..'unkid'..replyy}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3252,7 +3252,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3646,7 +3646,7 @@ return false
 end   
 reply_markup = bot.replyMarkup{
 type = 'inline',data = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
 }
 }
 if tonumber(infomsg[2]) == 1 then
@@ -4235,7 +4235,7 @@ if Text == "Updates" then
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تحديث البوت ›',data="UpBot"},{text = '‹ تحديث السورس ›',data="UpSu"}},
-{{text = '‹ قناة التحديثات ›',url="t.me/UPDATEWhite"}},
+{{text = '‹ قناة التحديثات ›',url="t.me/rssrsrr"}},
 {{text = '‹ رجوع ›',data="Can"}},
 }
 }
@@ -4245,7 +4245,7 @@ if Text == "botsettings" then
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تغيير المطور الاساسي ›',data="EditDevbot"}},
-{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "وايت"),data="delnamebot"}},
+{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "تون"),data="delnamebot"}},
 {{text = '‹ تغيير كليشه ستارت ›',data="addstarttxt"},{text ="‹ حذف كليشه ستارت ›",data="Deltxtstart"}},
 {{text = '‹ تنظيف المشتركين ›',data="clenMsh"},{text ="‹ تنظيف المجموعات ›",data="clenMg"}},
 {{text = '‹ التواصل ›',data="..."},{text ='‹ الاشعارات ›',data=".."},{text ='‹ الخدمي ›',data="...."}},
@@ -4288,7 +4288,7 @@ end
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تغيير المطور الاساسي ›',data="EditDevbot"}},
-{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "وايت"),data="delnamebot"}},
+{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "تون"),data="delnamebot"}},
 {{text = '‹ تغيير كليشه ستارت ›',data="addstarttxt"},{text ="‹ حذف كليشه ستارت ›",data="Deltxtstart"}},
 {{text = '‹ تنظيف المشتركين ›',data="clenMsh"},{text ="‹ تنظيف المجموعات ›",data="clenMg"}},
 {{text = '‹ التواصل ›',data="..."},{text ='‹ الاشعارات ›',data=".."},{text ='‹ الخدمي ›',data="...."}},
@@ -4313,7 +4313,7 @@ end
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تغيير المطور الاساسي ›',data="EditDevbot"}},
-{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "وايت"),data="delnamebot"}},
+{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "تون"),data="delnamebot"}},
 {{text = '‹ تغيير كليشه ستارت ›',data="addstarttxt"},{text ="‹ حذف كليشه ستارت ›",data="Deltxtstart"}},
 {{text = '‹ تنظيف المشتركين ›',data="clenMsh"},{text ="‹ تنظيف المجموعات ›",data="clenMg"}},
 {{text = '‹ التواصل ›',data="..."},{text ='‹ الاشعارات ›',data=".."},{text ='‹ الخدمي ›',data="...."}},
@@ -4338,7 +4338,7 @@ end
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تغيير المطور الاساسي ›',data="EditDevbot"}},
-{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "وايت"),data="delnamebot"}},
+{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "تون"),data="delnamebot"}},
 {{text = '‹ تغيير كليشه ستارت ›',data="addstarttxt"},{text ="‹ حذف كليشه ستارت ›",data="Deltxtstart"}},
 {{text = '‹ تنظيف المشتركين ›',data="clenMsh"},{text ="‹ تنظيف المجموعات ›",data="clenMg"}},
 {{text = '‹ التواصل ›',data="..."},{text ='‹ الاشعارات ›',data=".."},{text ='‹ الخدمي ›',data="...."}},
@@ -4363,7 +4363,7 @@ end
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تغيير المطور الاساسي ›',data="EditDevbot"}},
-{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "وايت"),data="delnamebot"}},
+{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "تون"),data="delnamebot"}},
 {{text = '‹ تغيير كليشه ستارت ›',data="addstarttxt"},{text ="‹ حذف كليشه ستارت ›",data="Deltxtstart"}},
 {{text = '‹ تنظيف المشتركين ›',data="clenMsh"},{text ="‹ تنظيف المجموعات ›",data="clenMg"}},
 {{text = '‹ التواصل ›',data="..."},{text ='‹ الاشعارات ›',data=".."},{text ='‹ الخدمي ›',data="...."}},
@@ -4388,7 +4388,7 @@ end
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تغيير المطور الاساسي ›',data="EditDevbot"}},
-{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "وايت"),data="delnamebot"}},
+{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "تون"),data="delnamebot"}},
 {{text = '‹ تغيير كليشه ستارت ›',data="addstarttxt"},{text ="‹ حذف كليشه ستارت ›",data="Deltxtstart"}},
 {{text = '‹ تنظيف المشتركين ›',data="clenMsh"},{text ="‹ تنظيف المجموعات ›",data="clenMg"}},
 {{text = '‹ التواصل ›',data="..."},{text ='‹ الاشعارات ›',data=".."},{text ='‹ الخدمي ›',data="...."}},
@@ -4413,7 +4413,7 @@ end
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تغيير المطور الاساسي ›',data="EditDevbot"}},
-{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "وايت"),data="delnamebot"}},
+{{text = '‹ تغيير اسم البوت ›',data="namebot"},{text =(redis:get(bot_id..":namebot") or "تون"),data="delnamebot"}},
 {{text = '‹ تغيير كليشه ستارت ›',data="addstarttxt"},{text ="‹ حذف كليشه ستارت ›",data="Deltxtstart"}},
 {{text = '‹ تنظيف المشتركين ›',data="clenMsh"},{text ="‹ تنظيف المجموعات ›",data="clenMg"}},
 {{text = '‹ التواصل ›',data="..."},{text ='‹ الاشعارات ›',data=".."},{text ='‹ الخدمي ›',data="...."}},
@@ -4964,7 +4964,7 @@ end
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
 {{text = '-  اضفني الى مجموعتك .',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
 }
 }
 if redis:get(bot_id..":start") then
@@ -6001,7 +6001,7 @@ end
 ---
 if msg.content.text and msg.content.text.text then   
 ----------------------------------------------------------------------------------------------------
-if text == "غادر" or text == "غادري" or text == "وايت غادري" and redis:get(bot_id..":Departure") then 
+if text == "غادر" or text == "غادري" or text == "تون غادري" and redis:get(bot_id..":Departure") then 
 if programmer(msg) then  
 bot.sendText(msg.chat_id,msg.id,"*- تم مغادرة المجموعه*","md",true)
 local Left_Bot = bot.leaveChat(msg.chat_id)
@@ -8424,9 +8424,9 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = 'ماستر', data = msg.sender_id.user_id..'/master'},{text = 'فيزا', data = msg.sender_id.user_id..'/visaa'},{text = 'وايت', data = msg.sender_id.user_id..'/express'},
+{text = 'ماستر', data = msg.sender_id.user_id..'/master'},{text = 'فيزا', data = msg.sender_id.user_id..'/visaa'},{text = 'تون', data = msg.sender_id.user_id..'/express'},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 }
 }
 return bot.sendText(msg.chat_id,msg.id,ttshakse,"md",false, false, false, false, reply_markup)
@@ -8754,7 +8754,7 @@ type = 'inline',data = {
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
 return false
 end
 if redis:sismember(bot_id.."booob",Remsg.sender_id.user_id) then
@@ -8799,7 +8799,7 @@ shkseemg = "طيبة 😇"
 else
 shkseemg = "شريرة 😈"
 end
-bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..cccc.."`\n- بنك ↢ ( وايت )\n- نوع ↢ ( "..uuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- الزرف ( "..math.floor(pppp).." دينار 💵 )\n- شخصيتك : "..shkseemg.."\n","md",true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..cccc.."`\n- بنك ↢ ( تون )\n- نوع ↢ ( "..uuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- الزرف ( "..math.floor(pppp).." دينار 💵 )\n- شخصيتك : "..shkseemg.."\n","md",true, false, false, false, reply_markup)
 else
 bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true, false, false, false, reply_markup)
 end
@@ -8814,7 +8814,7 @@ type = 'inline',data = {
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
 return false
 end
 local ban = bot.getUser(Remsg.sender_id.user_id)
@@ -8884,7 +8884,7 @@ redis:del(bot_id.."carsonaname"..Remsg.sender_id.user_id)
 redis:del(bot_id.."carsonanum"..Remsg.sender_id.user_id)
 redis:del(bot_id.."carcoroname"..Remsg.sender_id.user_id)
 redis:del(bot_id.."carcoronum"..Remsg.sender_id.user_id)
-bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..ccccc.."`\n- بنك ↢ ( وايت )\n- نوع ↢ ( "..uuuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار ?? )\n- الزرف ↢ ( "..math.floor(ppppp).." دينار 💵 )\n- مسكين مسحت حسابه \n","md",true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..ccccc.."`\n- بنك ↢ ( تون )\n- نوع ↢ ( "..uuuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار ?? )\n- الزرف ↢ ( "..math.floor(ppppp).." دينار 💵 )\n- مسكين مسحت حسابه \n","md",true, false, false, false, reply_markup)
 else
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
@@ -8904,7 +8904,7 @@ type = 'inline',data = {
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
 return false
 end
 local ban = bot.getUser(Remsg.sender_id.user_id)
@@ -8930,7 +8930,7 @@ shkseemg = "طيبة 😇"
 else
 shkseemg = "شريرة 😈"
 end
-bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..ccccc.."`\n- بنك ↢ ( وايت )\n- نوع ↢ ( "..uuuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- الزرف ↢ ( "..math.floor(ppppp).." دينار 💵 )\n- شخصيته : "..shkseemg.."\n","md",true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..ccccc.."`\n- بنك ↢ ( تون )\n- نوع ↢ ( "..uuuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- الزرف ↢ ( "..math.floor(ppppp).." دينار 💵 )\n- شخصيته : "..shkseemg.."\n","md",true, false, false, false, reply_markup)
 else
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
@@ -9016,7 +9016,7 @@ redis:del(bot_id.."carsonanum"..coniss)
 redis:del(bot_id.."carcoroname"..coniss)
 redis:del(bot_id.."carcoronum"..coniss)
 redis:srem(bot_id.."rrfffid", coniss)
-bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..ccccc.."`\n- بنك ↢ ( وايت )\n- نوع ↢ ( "..uuuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- الزرف ↢ ( "..math.floor(ppppp).." دينار 💵 )\n- مسكين مسحت حسابه \n","md",true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ `"..ccccc.."`\n- بنك ↢ ( تون )\n- نوع ↢ ( "..uuuuu.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- الزرف ↢ ( "..math.floor(ppppp).." دينار 💵 )\n- مسكين مسحت حسابه \n","md",true, false, false, false, reply_markup)
 else
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
@@ -9043,7 +9043,7 @@ shkseemg = "طيبة 😇"
 else
 shkseemg = "شريرة 😈"
 end
-bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..yty.."\n- الحساب ↢ `"..coniss.."`\n- بنك ↢ ( وايت )\n- نوع ↢ ( "..fsvhh.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- شخصيته : "..shkseemg.."\n","md",true)
+bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..yty.."\n- الحساب ↢ `"..coniss.."`\n- بنك ↢ ( تون )\n- نوع ↢ ( "..fsvhh.." )\n- الرصيد ↢ ( "..convert_mony.." دينار 💵 )\n- شخصيته : "..shkseemg.."\n","md",true)
 else
 bot.sendText(msg.chat_id,msg.id, "- مافيه حساب بنكي كذا","md",true, false, false, false, reply_markup)
 end
@@ -9331,8 +9331,8 @@ decdecb = redis:get(bot_id.."boob"..fsvhhh) or 0
 deccde2 = decdecb + UserNameyy
 redis:set(bot_id.."boob"..fsvhhh , math.floor(deccde2))
 
-bot.sendText(msg.chat_id,msg.id, "- حوالة صادرة من بنك وايت\n\n- المرسل : "..news.."\n- الحساب رقم : `"..cccc.."`\n- نوع البطاقة : "..uuuu.."\n- المستلم : "..newss.."\n- الحساب رقم : `"..text.."`\n- نوع البطاقة : "..fsvhh.."\n- خصمت 10% رسوم تحويل\n- المبلغ : "..convert_mony.." دينار 💵","md",true, false, false, false, reply_markup)
-bot.sendText(fsvhhh,0, "- حوالة واردة من بنك وايت\n\n- المرسل : "..news.."\n- الحساب رقم : `"..cccc.."`\n- نوع البطاقة : "..uuuu.."\n- المبلغ : "..convert_mony.." دينار ??","md",true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id, "- حوالة صادرة من بنك تون\n\n- المرسل : "..news.."\n- الحساب رقم : `"..cccc.."`\n- نوع البطاقة : "..uuuu.."\n- المستلم : "..newss.."\n- الحساب رقم : `"..text.."`\n- نوع البطاقة : "..fsvhh.."\n- خصمت 10% رسوم تحويل\n- المبلغ : "..convert_mony.." دينار 💵","md",true, false, false, false, reply_markup)
+bot.sendText(fsvhhh,0, "- حوالة واردة من بنك تون\n\n- المرسل : "..news.."\n- الحساب رقم : `"..cccc.."`\n- نوع البطاقة : "..uuuu.."\n- المبلغ : "..convert_mony.." دينار ??","md",true, false, false, false, reply_markup)
 redis:del(bot_id.."trans" .. msg.chat_id .. ":" .. msg.sender_id.user_id) 
 redis:del(bot_id.."transn" .. msg.sender_id.user_id)
 else
@@ -9364,7 +9364,7 @@ if text == "ترتيبه" and tonumber(msg.reply_to_message_id) ~= 0 then
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true)  
 return false
 end
 if redis:sismember(bot_id.."booob",Remsg.sender_id.user_id) then
@@ -9386,7 +9386,7 @@ bot.sendText(msg.chat_id,msg.id, "- ماعنده حساب بنكي","md",true)
 end
 end
 if text == "توب" or text == "التوب" then
-local toptop = "- اهلين فيك في قوائم التوب\nللمزيد من التفاصيل - [@WhiteDaeb]\n"
+local toptop = "- اهلين فيك في قوائم التوب\nللمزيد من التفاصيل - [@rsrrsrr]\n"
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
@@ -9400,7 +9400,7 @@ data = {
 {text = 'اخفاء ', data = msg.sender_id.user_id..'/delAmr'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -9479,7 +9479,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -9545,7 +9545,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -9637,7 +9637,7 @@ end
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)
 return false
 end
 if Remsg.sender_id.user_id == msg.sender_id.user_id then
@@ -9761,7 +9761,7 @@ if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true)
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true)
 return false
 end
 local hrameid = redis:get(bot_id.."hrameid"..msg.chat_id..msg.sender_id.user_id)
@@ -10326,7 +10326,7 @@ if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true)  
 return false
 end
 if Remsg.sender_id.user_id == msg.sender_id.user_id then
@@ -10425,7 +10425,7 @@ end
 if text == "المعرض" or text == "معرض" then
 redis:setex(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id,60, true)
 bot.sendText(msg.chat_id,msg.id,[[
-– اهلين فيك بمعرض وايت
+– اهلين فيك بمعرض تون
 - يتوفر لدينا حالياً :
 
 ⇠ `سيارات`  🚗
@@ -12445,7 +12445,7 @@ end
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت مو للزواج 🤣*","md",true)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون مو للزواج 🤣*","md",true)  
 return false
 end
 if redis:get(bot_id.."roog1"..msg.sender_id.user_id) then
@@ -12552,7 +12552,7 @@ gg = "\n\nملاحظة : اي شخص مخالف للعبة بالغش او حا�
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -12624,7 +12624,7 @@ gg = "\n\nملاحظة : اي شخص مخالف للعبة بالغش او حا�
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -12669,7 +12669,7 @@ end
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت مو متزوجه 🤣*","md",true)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون مو متزوجه 🤣*","md",true)  
 return false
 end
 local zoog = redis:get(bot_id.."roog1"..Remsg.sender_id.user_id)
@@ -12795,12 +12795,12 @@ if text == "السوق" or text == "سوق" then
 if not redis:get(bot_id.."market"..msg.chat_id) then
 return bot.sendText(msg.chat_id,msg.id,"- السوق مقفل من قبل المشرفين","md",true)
 end
-local pricemarket = "- اهلين فيك في سوق وايت\nلائحة باسعار منتجات وايت :\n\n1) كشف وثيقة زواج 100 دينار 💵\n2) رتبه 5000000 دينار 💵\n3) منشن جماعي 1000000 دينار 💵\n4) ضع رد 10000000 دينار 💵\n- تستطيع استخدام ميزة ( استرداد المبلغ )\n- بالنسبة لميزة ضع رد اذا وجد رد مخالف يستطيع مشرفين لكروب مسحه بامر - مسح ضع رد\n"
+local pricemarket = "- اهلين فيك في سوق تون\nلائحة باسعار منتجات تون :\n\n1) كشف وثيقة زواج 100 دينار 💵\n2) رتبه 5000000 دينار 💵\n3) منشن جماعي 1000000 دينار 💵\n4) ضع رد 10000000 دينار 💵\n- تستطيع استخدام ميزة ( استرداد المبلغ )\n- بالنسبة لميزة ضع رد اذا وجد رد مخالف يستطيع مشرفين لكروب مسحه بامر - مسح ضع رد\n"
 local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -12963,7 +12963,7 @@ mensep = ballancee + 2500000
 redis:set(bot_id.."boob"..msg.sender_id.user_id , math.floor(mensep))
 local ballancee = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
 local convert_mony = string.format("%.0f",ballancee)
-bot.sendText(msg.chat_id,msg.id,"\n- تم استرداد نصف المبلغ :\n\nالمنتج : ضع رتبه\nالمبلغ : 2500000 دينار\nرصيدك الان : "..convert_mony.." دينار 💵\nرقم الوصل : `"..numcare.."`\n\nشكراً لاستخدامك سوق وايت\n","md",true)
+bot.sendText(msg.chat_id,msg.id,"\n- تم استرداد نصف المبلغ :\n\nالمنتج : ضع رتبه\nالمبلغ : 2500000 دينار\nرصيدك الان : "..convert_mony.." دينار 💵\nرقم الوصل : `"..numcare.."`\n\nشكراً لاستخدامك سوق تون\n","md",true)
 redis:del(bot_id.."rotpa"..msg.sender_id.user_id)
 redis:del(bot_id.."rotpagrid"..msg.sender_id.user_id)
 redis:del(bot_id.."rotpaid"..msg.sender_id.user_id)
@@ -12975,7 +12975,7 @@ mensepp = ballancee + 5000000
 redis:set(bot_id.."boob"..msg.sender_id.user_id , math.floor(mensepp))
 local ballancee = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
 local convert_mony = string.format("%.0f",ballancee)
-bot.sendText(msg.chat_id,msg.id,"\n- تم استرداد نصف المبلغ :\n\nالمنتج : ضع رد\nالمبلغ : 5000000 دينار\nرصيدك الان : "..convert_mony.." دينار 💵\nرقم الوصل : "..numrd.."\n\nشكراً لاستخدامك سوق وايت\n","md",true)
+bot.sendText(msg.chat_id,msg.id,"\n- تم استرداد نصف المبلغ :\n\nالمنتج : ضع رد\nالمبلغ : 5000000 دينار\nرصيدك الان : "..convert_mony.." دينار 💵\nرقم الوصل : "..numrd.."\n\nشكراً لاستخدامك سوق تون\n","md",true)
 redis:del(bot_id.."rddd"..msg.sender_id.user_id)
 redis:del(bot_id.."rdddgr"..msg.sender_id.user_id)
 redis:del(bot_id.."rdddid"..msg.sender_id.user_id)
@@ -13236,7 +13236,7 @@ if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true)
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true)
 return false
 end
 if Remsg.sender_id.user_id == msg.sender_id.user_id then
@@ -13282,7 +13282,7 @@ if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true)
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true)
 return false
 end
 if Remsg.sender_id.user_id == msg.sender_id.user_id then
@@ -13719,7 +13719,7 @@ local intk = inoi:gsub(" ","-")
 lan = "ar"
 local rand = math.random(1,999)
 os.execute("gtts-cli "..intk.." -l '"..lan.."' -o 'intk"..rand..".mp3'")
-bot.sendAudio(msg.chat_id,msg.id,'./intk'..rand..'.mp3',tostring(inoi),"html",nil,tostring(inoi),"@WhiteDaeb")
+bot.sendAudio(msg.chat_id,msg.id,'./intk'..rand..'.mp3',tostring(inoi),"html",nil,tostring(inoi),"@rsrrsrr")
 sleep(1)
 os.remove("intk"..rand..".mp3")
 else
@@ -13788,7 +13788,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -13857,7 +13857,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -13930,7 +13930,7 @@ if devS(msg.sender_id.user_id) or devB(msg.sender_id.user_id) then
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)  
 return false
 end
 local ban = bot.getUser(Remsg.sender_id.user_id)
@@ -13948,7 +13948,7 @@ uuuuu = redis:get(bot_id.."bbobb"..Remsg.sender_id.user_id)
 ppppp = redis:get(bot_id.."rrfff"..Remsg.sender_id.user_id) or 0
 ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
 local convert_mony = string.format("%.0f",ballanceed)
-bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ "..ccccc.."\n- بنك ↢ ( وايت )\n- نوع ↢ ( "..uuuuu.." )\n- الزرف ↢ ( "..ppppp.." دولار ?? )\n- رفعه رصيده ↢ ( "..convert_mony.." دينار 💵 )\n","md",true, false, false, false, reply_markup)
+bot.sendText(msg.chat_id,msg.id, "- الاسم ↢ "..news.."\n- الحساب ↢ "..ccccc.."\n- بنك ↢ ( تون )\n- نوع ↢ ( "..uuuuu.." )\n- الزرف ↢ ( "..ppppp.." دولار ?? )\n- رفعه رصيده ↢ ( "..convert_mony.." دينار 💵 )\n","md",true, false, false, false, reply_markup)
 else
 bot.sendText(msg.chat_id,msg.id, "- ماعنده حساب بنكي ","md",true, false, false, false, reply_markup)
 end
@@ -14004,7 +14004,7 @@ data = {
 {
 {text = '🤑', data = msg.sender_id.user_id..Descriptioont1},{text = '🤑', data = msg.sender_id.user_id..Descriptioont2},{text = '🤑', data = msg.sender_id.user_id..Descriptioont3},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
 }
 }
 return bot.sendText(msg.chat_id,msg.id,ttshakse,"md",false, false, false, false, reply_markup)
@@ -14017,7 +14017,7 @@ if text == 'كم فلوسه' and tonumber(msg.reply_to_message_id) ~= 0 then
 local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = bot.getUser(Remsg.sender_id.user_id)
 if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- وايت ماعندها حساب بالبنك 🤣*","md",true)  
+bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true)  
 return false
 end
 if redis:sismember(bot_id.."booob",Remsg.sender_id.user_id) then
@@ -14028,7 +14028,7 @@ local intk = inoi:gsub(" ","-")
 lan = "ar"
 local rand = math.random(1,999)
 os.execute("gtts-cli "..intk.." -l '"..lan.."' -o 'intk"..rand..".mp3'")
-bot.sendAudio(msg.chat_id,msg.id,'./intk'..rand..'.mp3',tostring(inoi),"html",nil,tostring(inoi),"@WhiteDaeb")
+bot.sendAudio(msg.chat_id,msg.id,'./intk'..rand..'.mp3',tostring(inoi),"html",nil,tostring(inoi),"@rsrrsrr")
 sleep(1)
 os.remove("intk"..rand..".mp3")
 else
@@ -14045,7 +14045,7 @@ lan = "ar"
 end
 local rand = math.random(1,999)
 os.execute("gtts-cli "..intk.." -l '"..lan.."' -o 'intk"..rand..".mp3'")
-bot.sendAudio(msg.chat_id,msg.id,'./intk'..rand..'.mp3',tostring(inoi),"html",nil,tostring(inoi),"@WhiteDaeb")
+bot.sendAudio(msg.chat_id,msg.id,'./intk'..rand..'.mp3',tostring(inoi),"html",nil,tostring(inoi),"@rsrrsrr")
 sleep(1)
 os.remove("intk"..rand..".mp3")
 end
@@ -14224,7 +14224,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/WhiteDaeb"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -14451,7 +14451,7 @@ local NamecBots = {
 return bot.sendText(msg.chat_id,msg.id, NamecBots[math.random(#NamecBots)],"md",true)  
 end
 end
-if text == 'وايت احبك' then
+if text == 'تون احبك' then
 if redis:get(bot_id.."Status:Reply"..msg.chat_id) then
 local NamecBots = {
 'اكثر 💚',
@@ -14459,7 +14459,7 @@ local NamecBots = {
 return bot.sendText(msg.chat_id,msg.id, NamecBots[math.random(#NamecBots)],"md",true)  
 end
 end
-if text == 'وايت نتزوج' then
+if text == 'تون نتزوج' then
 if redis:get(bot_id.."Status:Reply"..msg.chat_id) then
 local NamecBots = {
 'ليتك نايم',
@@ -14467,7 +14467,7 @@ local NamecBots = {
 return bot.sendText(msg.chat_id,msg.id, NamecBots[math.random(#NamecBots)],"md",true)  
 end
 end
-if text == 'وايت تحبيني' then
+if text == 'تون تحبيني' then
 if redis:get(bot_id.."Status:Reply"..msg.chat_id) then
 local NamecBots = {
 'لا',
@@ -14483,7 +14483,7 @@ local NamecBots = {
 return bot.sendText(msg.chat_id,msg.id, NamecBots[math.random(#NamecBots)],"md",true)  
 end
 end
-if text == 'وايت تتزوجيني' then
+if text == 'تون تتزوجيني' then
 if redis:get(bot_id.."Status:Reply"..msg.chat_id) then
 local NamecBots = {
 'تخيل اتزوجك اذلف بس',
@@ -14711,7 +14711,7 @@ end
 if text == 'منور' or text == 'منوره' or text == 'منورة' then
 if redis:get(bot_id.."Status:Reply"..msg.chat_id) then
 local NamegBots = {
-'بنور وايت',
+'بنور تون',
 'بنوري',
 }
 return bot.sendText(msg.chat_id,msg.id, NamegBots[math.random(#NamegBots)],"md",true)  
@@ -14761,16 +14761,16 @@ local NamecBots = {
 'عيون البوت',
 'انت البوت',
 'يارب صبرك',
-'صعبة تقول وايت',
+'صعبة تقول تون',
 'نادني باسمي',
 'شتبي',
 'كُلي اذان صاغيه',
 'قلب البوت',
-'اشغلتنا قل وايت ',
+'اشغلتنا قل تون ',
 'بوت فعينك',
 'جعل مايقولها غيرك 🤍.',
 'لاتكلمني اذا قلت اسمي ارد عليك',
-'يهطف اسمي وايت.',
+'يهطف اسمي تون.',
 'بس تقول اسمي ارد عليك',
 'هف',
 'مريض انت نادني باسمي',
@@ -14778,21 +14778,21 @@ local NamecBots = {
 return bot.sendText(msg.chat_id,msg.id, NamecBots[math.random(#NamecBots)],"md",true)  
 end
 end
-if text == "بوت" or text == (redis:get(bot_id..":namebot") or "وايت") then
+if text == "بوت" or text == (redis:get(bot_id..":namebot") or "تون") then
 if redis:get(bot_id.."Status:Reply"..msg.chat_id) then
 local NamecBots = {
 'سم حبيبي️',
 'احلى من يناديني',
 'آمرني',
-'بعد عمر وايت',
+'بعد عمر تون',
 'امسكوهه عني',
-'بعد قلب وايت',
+'بعد قلب تون',
 '‏امر ويش بغيت',
 'ياهلا ومسهلا',
 'خير شتبي',
 'و بعدين معك',
 'لبيه',
-'عيون وايت',
+'عيون تون',
 'هااا',
 'هلا ؟',
 'ياخي شتبي/ن',
@@ -14820,7 +14820,7 @@ if text == "الساعه" or text == "الوقت" then
 bot.sendText(msg.chat_id,msg.id,"*- الساعه الان : "..os.date("%I:%M %p").." *","md",true)  
 end
 if text == "شسمك" or text == "شنو اسمك" then
-namet = {"حجي اسمي "..(redis:get(bot_id..":namebot") or "وايت"),"يابه اسمي "..(redis:get(bot_id..":namebot") or "وايت"),"اني لقميل "..(redis:get(bot_id..":namebot") or "وايت"),(redis:get(bot_id..":namebot") or "وايت").." اني"}
+namet = {"حجي اسمي "..(redis:get(bot_id..":namebot") or "تون"),"يابه اسمي "..(redis:get(bot_id..":namebot") or "تون"),"اني لعميل "..(redis:get(bot_id..":namebot") or "تون"),(redis:get(bot_id..":namebot") or "تون").." اني"}
 bot.sendText(msg.chat_id,msg.id,"*"..namet[math.random(#namet)].."*","md",true)  
 end 
 if text == "التاريخ" then
@@ -16232,7 +16232,7 @@ local Text ='*الصراحه اتفق هذا شبيهك .*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = "https://t.me/WhiteDaeb"}
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = "https://t.me/rsrrsrr"}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -16248,7 +16248,7 @@ local Text ='*الصراحه اتفق هذي شبيهتك .*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = "https://t.me/WhiteDaeb"}
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = "https://t.me/rsrrsrr"}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -16329,7 +16329,7 @@ if text == "قصيده" or text == "ق" then
   local MsgId = msg.id/2097152/0.5
   local MSGID = string.gsub(MsgId,'.0','')
   keyboard = {}
-  keyboard.inline_keyboard = {{{text = '- sᴏᴜʀᴄᴇ ᴀʟʜ ᴀʟᴀғɪɪ .',url="t.me/WhiteDaeb"}}} 
+  keyboard.inline_keyboard = {{{text = '- sᴏᴜʀᴄᴇ ᴀʟʜ ᴀʟᴀғɪɪ .',url="t.me/rsrrsrr"}}} 
   local msg_id = msg.id/2097152/0.5
   https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/RRRRRRRiRRR/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
   end
@@ -16340,7 +16340,7 @@ local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 keyboard = {}  
 keyboard.inline_keyboard = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
 }
 local msg_id = msg.id/2097152/0.5 
 https.request("https://api.telegram.org/bot"..Token..'/sendanimation?chat_id=' .. msg.chat_id .. '&animation=https://t.me/stortolen/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -16355,7 +16355,7 @@ local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 keyboard = {}  
 keyboard.inline_keyboard = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
 }
 local msg_id = msg.id/2097152/0.5 
 https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/SSSSDIBOTZ/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -16590,7 +16590,7 @@ data = {
 {text = ' نعم ', data = msg.sender_id.user_id..'/Nzlne'},{text = ' لا ', data = msg.sender_id.user_id..'/noNzlne'},
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = 't.me/WhiteDaeb'}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = 't.me/rsrrsrr'}, 
 },
 }
 }
@@ -16675,7 +16675,7 @@ local banhas = 'ᴜѕᴇ : '..banusername
 local rengk = 'ѕᴛᴀ : '..RinkBot
 local masha = 'ᴍѕɢ : '..TotalMsg
 local BIO = 'ʙɪᴏ : '..GetBio(msg.sender_id.user_id)
-local again = '[- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .](t.me/WhiteDaeb)'
+local again = '[- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .](t.me/rsrrsrr)'
 local reply_markup = bot.replyMarkup{type = 'inline',data = {
 {
 {text = uass, url = "https://t.me/"..ban.username..""}, 
@@ -17446,7 +17446,7 @@ end
 if msg.sender_id.user_id == tonumber(5413631898) then
 bot.sendText(msg.chat_id,msg.id,"- انتا العشق وهم 🥰","md",true)
 elseif msg.sender_id.user_id == tonumber(5413631898) then
-bot.sendText(msg.chat_id,msg.id,"- المطور وايت 😍","md",true)
+bot.sendText(msg.chat_id,msg.id,"- المطور تون 😍","md",true)
 elseif devB(msg.sender_id.user_id) then
 bot.sendText(msg.chat_id,msg.id,"- انت المطور الاساسي يقلبي🌚♥","md",true)
 elseif programmer(msg) then
@@ -18722,7 +18722,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/rsrrsrr"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,'\n*- معلومات المجموعه : ⬇️ .\n- الايدي : ( '..msg.chat_id..' ) .\n- عدد الاعضاء : '..Info_Chats.member_count..' .\n- عدد الادمنيه : '..Info_Chats.administrator_count..' .\n- عدد المطرودين : '..Info_Chats.banned_count..' .\n- عدد المقيدين : '..Info_Chats.restricted_count..' .*',"md",true, false, false, false, reply_markup)
@@ -18748,7 +18748,7 @@ data = {
 {{text="🦖 Dragon Game 🦖",url='https://t.me/T4TTTTBOT?game=dragon'},{text="🐍 3D Snake Game 🐍",url='https://t.me/T4TTTTBOT?game=snake'}},
 {{text="🔵 Color Game 🔴",url='https://t.me/T4TTTTBOT?game=color'}},
 {{text="🚀 Rocket Game 🚀",url='https://t.me/T4TTTTBOT?game=rocket'},{text="🏹 Arrow Game 🏹",url='https://t.me/T4TTTTBOT?game=arrow'}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,'*- قائمه الالعاب المتطورة *',"md", true, false, false, false, reply_markup)
@@ -18958,7 +18958,7 @@ end
 if text == "اوامر التسليه" or text == "اوامر التسلية" then 
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/rsrrsrr"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,"*- اوامر التسليه هي .\nٴ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n- مصه . \n- بوسه . \n- هينه . \n- رزلها . \n- هينها . \n- شنو رئيك بهذا . \n- شنو رئيك بهاي . \n- كت تويت .*","md", true, false, false, false, reply_markup)
@@ -23766,13 +23766,13 @@ end
 end
 -- نهايه التفعيل
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then 
-local Text = "*- welcome to the 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻*\n"
+local Text = "*- W𝖾lc𝗈𝗆𝖾 𝖳𝗈 𝗍𝗁𝖾 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .*\n"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 ..',url="https://t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 ..',url="https://t.me/rsrrsrr"}},
 {{text = '- CoDeR .',url="https://t.me/F_T_Y"}},
 }
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg.chat_id .. "&photo=https://t.me/WhiteDaeb&caption=".. URL.escape(Text).."&photo=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg.chat_id .. "&photo=https://t.me/rsrrsrr&caption=".. URL.escape(Text).."&photo=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 ----------------------------------------------------------------------------------------------------
 if text and text:match("^تعيين عدد الاعضاء (%d+)$") then
@@ -23835,7 +23835,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
 }
 }
 UserInfo = bot.getUser(msg.sender_id.user_id).first_name
@@ -23863,7 +23863,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/WhiteDaeb"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/rsrrsrr"}},
 }
 }
 UserInfo = bot.getUser(msg.sender_id.user_id).first_name
@@ -23992,7 +23992,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖣𝗂𝗋https://t.me/WhiteDaeb𝖾c𝗍 .', url = 't.me/WhiteDaeb'}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 https://t.me/rsrrsrr', url = 't.me/rsrrsrr'}, 
 },
 }
 }
@@ -24215,9 +24215,9 @@ type = 'inline',data = {
 }
 }
 if photo.total_count > 0 then
-bot.sendPhoto(data.message.chat_id, data.message.id, photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id,"*- انا بوت اسمي وايت\n- اختصاصي حماية المجموعهات وادارتها\n- يوتيوب، تشغيل الاغاني في المكالمه ، العاب، كت تويت، والعديد من الميزات اكتشفها بنفسك\n- والأفضل من هذا ان البوت مبرمج على النسخة الجديدة 64 بت خالٍ من المشاكل .\n- علمود تفعلني ارفعني مشرف بس *", 'md', nil, nil, nil, nil, nil, nil, nil, nil, nil, kup)
+bot.sendPhoto(data.message.chat_id, data.message.id, photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id,"*- انا بوت اسمي تون\n- اختصاصي حماية المجموعهات وادارتها\n- يوتيوب، تشغيل الاغاني في المكالمه ، العاب، كت تويت، والعديد من الميزات اكتشفها بنفسك\n- والأفضل من هذا ان البوت مبرمج على النسخة الجديدة 64 بت خالٍ من المشاكل .\n- علمود تفعلني ارفعني مشرف بس *", 'md', nil, nil, nil, nil, nil, nil, nil, nil, nil, kup)
 else
-bot.sendText(data.message.chat_id,data.message.id,"*- انا بوت اسمي وايت\n- اختصاصي حماية المجموعهات وادارتها\n- يوتيوب، تشغيل الاغاني في المكالمه ، العاب، كت تويت، والعديد من الميزات اكتشفها بنفسك\n- والأفضل من هذا ان البوت مبرمج على النسخة الجديدة 64 بت خالٍ من المشاكل .\n- علمود تفعلني ارفعني مشرف بس *","md",true, false, false, false, kup)
+bot.sendText(data.message.chat_id,data.message.id,"*- انا بوت اسمي تون\n- اختصاصي حماية المجموعهات وادارتها\n- يوتيوب، تشغيل الاغاني في المكالمه ، العاب، كت تويت، والعديد من الميزات اكتشفها بنفسك\n- والأفضل من هذا ان البوت مبرمج على النسخة الجديدة 64 بت خالٍ من المشاكل .\n- علمود تفعلني ارفعني مشرف بس *","md",true, false, false, false, kup)
 end
 end
 end
