@@ -1748,7 +1748,7 @@ data = {
 {text = 'تحميل صوت', data = data.sender_user_id..'sound/'..id}, {text = 'تحميل فيديو', data = data.sender_user_id..'video/'..id}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = 't.me/rsrrsrr'},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url = 't.me/rsrrsrr'},
 },
 }
 }
@@ -2121,7 +2121,7 @@ if Text and Text:match('(%d+)/play_wheel') then
     local keyboard = {} 
     keyboard.inline_keyboard = {
     {
-    {text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+    {text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
     },
     }
     local msg_reply = msg_id/2097152/0.5
@@ -2210,7 +2210,7 @@ data = {
 {text = 'اخفاء ', data = data.sender_user_id..'/delAmr'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -2281,7 +2281,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2356,7 +2356,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2434,7 +2434,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2507,7 +2507,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2592,7 +2592,7 @@ data = {
 {text = '‹ رجوع ›', data = data.sender_user_id..'/toptop'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2611,7 +2611,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2630,7 +2630,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2668,7 +2668,7 @@ data = {
 {
 {text = 'شخصية طيبة 😇', data = data.sender_user_id..'/msalm'},{text = 'شخصية شريرة 😈', data = data.sender_user_id..'/shrer'},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 }
 }
 bot.editMessageText(chat_id,msg_id,ttshakse, 'md', true, false, reply_markup)
@@ -2706,7 +2706,7 @@ data = {
 {
 {text = 'شخصية طيبة 😇', data = data.sender_user_id..'/msalm'},{text = 'شخصية شريرة 😈', data = data.sender_user_id..'/shrer'},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 }
 }
 bot.editMessageText(chat_id,msg_id,ttshakse, 'md', true, false, reply_markup)
@@ -2765,7 +2765,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2787,7 +2787,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2813,7 +2813,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2837,7 +2837,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2861,7 +2861,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -2886,7 +2886,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3151,7 +3151,7 @@ data = {
 {text = '‹ الغاء كتمه ›', data = data.sender_user_id..'unmute'..replyy}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3169,7 +3169,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3192,7 +3192,7 @@ data = {
 {text = '‹ الغاء حظره ›', data = data.sender_user_id..'unban'..replyy}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3211,7 +3211,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3233,7 +3233,7 @@ data = {
 {text = '‹ الغاء تقييده ›', data = data.sender_user_id..'unkid'..replyy}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3252,7 +3252,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 },
 }
 }
@@ -3646,7 +3646,7 @@ return false
 end   
 reply_markup = bot.replyMarkup{
 type = 'inline',data = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}},
 }
 }
 if tonumber(infomsg[2]) == 1 then
@@ -4964,7 +4964,7 @@ end
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
 {{text = '-  اضفني الى مجموعتك .',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}},
 }
 }
 if redis:get(bot_id..":start") then
@@ -8426,7 +8426,7 @@ data = {
 {
 {text = 'ماستر', data = msg.sender_id.user_id..'/master'},{text = 'فيزا', data = msg.sender_id.user_id..'/visaa'},{text = 'تون', data = msg.sender_id.user_id..'/express'},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 }
 }
 return bot.sendText(msg.chat_id,msg.id,ttshakse,"md",false, false, false, false, reply_markup)
@@ -9400,7 +9400,7 @@ data = {
 {text = 'اخفاء ', data = msg.sender_id.user_id..'/delAmr'}, 
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -9479,7 +9479,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -9545,7 +9545,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -12552,7 +12552,7 @@ gg = "\n\nملاحظة : اي شخص مخالف للعبة بالغش او حا�
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -12624,7 +12624,7 @@ gg = "\n\nملاحظة : اي شخص مخالف للعبة بالغش او حا�
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -12800,7 +12800,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -13788,7 +13788,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -13857,7 +13857,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -14004,7 +14004,7 @@ data = {
 {
 {text = '🤑', data = msg.sender_id.user_id..Descriptioont1},{text = '🤑', data = msg.sender_id.user_id..Descriptioont2},{text = '🤑', data = msg.sender_id.user_id..Descriptioont3},
 },
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}, 
 }
 }
 return bot.sendText(msg.chat_id,msg.id,ttshakse,"md",false, false, false, false, reply_markup)
@@ -14224,7 +14224,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url="t.me/rsrrsrr"},
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url="t.me/rsrrsrr"},
 },
 }
 }
@@ -16232,7 +16232,7 @@ local Text ='*الصراحه اتفق هذا شبيهك .*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = "https://t.me/rsrrsrr"}
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url = "https://t.me/rsrrsrr"}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -16248,7 +16248,7 @@ local Text ='*الصراحه اتفق هذي شبيهتك .*'
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = "https://t.me/rsrrsrr"}
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url = "https://t.me/rsrrsrr"}
 },
 }
 local msg_id = msg.id/2097152/0.5
@@ -16340,7 +16340,7 @@ local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 keyboard = {}  
 keyboard.inline_keyboard = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}},
 }
 local msg_id = msg.id/2097152/0.5 
 https.request("https://api.telegram.org/bot"..Token..'/sendanimation?chat_id=' .. msg.chat_id .. '&animation=https://t.me/stortolen/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -16355,7 +16355,7 @@ local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 keyboard = {}  
 keyboard.inline_keyboard = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}},
 }
 local msg_id = msg.id/2097152/0.5 
 https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/SSSSDIBOTZ/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
@@ -16590,7 +16590,7 @@ data = {
 {text = ' نعم ', data = msg.sender_id.user_id..'/Nzlne'},{text = ' لا ', data = msg.sender_id.user_id..'/noNzlne'},
 },
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .', url = 't.me/rsrrsrr'}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .', url = 't.me/rsrrsrr'}, 
 },
 }
 }
@@ -16675,7 +16675,7 @@ local banhas = 'ᴜѕᴇ : '..banusername
 local rengk = 'ѕᴛᴀ : '..RinkBot
 local masha = 'ᴍѕɢ : '..TotalMsg
 local BIO = 'ʙɪᴏ : '..GetBio(msg.sender_id.user_id)
-local again = '[- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .](t.me/rsrrsrr)'
+local again = '[- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .](t.me/rsrrsrr)'
 local reply_markup = bot.replyMarkup{type = 'inline',data = {
 {
 {text = uass, url = "https://t.me/"..ban.username..""}, 
@@ -18722,7 +18722,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="https://t.me/rsrrsrr"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,'\n*- معلومات المجموعه : ⬇️ .\n- الايدي : ( '..msg.chat_id..' ) .\n- عدد الاعضاء : '..Info_Chats.member_count..' .\n- عدد الادمنيه : '..Info_Chats.administrator_count..' .\n- عدد المطرودين : '..Info_Chats.banned_count..' .\n- عدد المقيدين : '..Info_Chats.restricted_count..' .*',"md",true, false, false, false, reply_markup)
@@ -18748,7 +18748,7 @@ data = {
 {{text="🦖 Dragon Game 🦖",url='https://t.me/T4TTTTBOT?game=dragon'},{text="🐍 3D Snake Game 🐍",url='https://t.me/T4TTTTBOT?game=snake'}},
 {{text="🔵 Color Game 🔴",url='https://t.me/T4TTTTBOT?game=color'}},
 {{text="🚀 Rocket Game 🚀",url='https://t.me/T4TTTTBOT?game=rocket'},{text="🏹 Arrow Game 🏹",url='https://t.me/T4TTTTBOT?game=arrow'}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,'*- قائمه الالعاب المتطورة *',"md", true, false, false, false, reply_markup)
@@ -18958,7 +18958,7 @@ end
 if text == "اوامر التسليه" or text == "اوامر التسلية" then 
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="https://t.me/rsrrsrr"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,"*- اوامر التسليه هي .\nٴ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n- مصه . \n- بوسه . \n- هينه . \n- رزلها . \n- هينها . \n- شنو رئيك بهذا . \n- شنو رئيك بهاي . \n- كت تويت .*","md", true, false, false, false, reply_markup)
@@ -23769,8 +23769,8 @@ if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or tex
 local Text = "*- W𝖾lc𝗈𝗆𝖾 𝖳𝗈 𝗍𝗁𝖾 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .*\n"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 ..',url="https://t.me/rsrrsrr"}},
-{{text = '- CoDeR .',url="https://t.me/F_T_Y"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 ..',url="https://t.me/rsrrsrr"}},
+{{text = '- 𝖣𝖾v𝖾l𝗈p𝖾𝗋 .',url="https://t.me/F_T_Y"}},
 }
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg.chat_id .. "&photo=https://t.me/rsrrsrr&caption=".. URL.escape(Text).."&photo=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
@@ -23835,7 +23835,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="t.me/rsrrsrr"}},
 }
 }
 UserInfo = bot.getUser(msg.sender_id.user_id).first_name
@@ -23863,7 +23863,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- 𝖲𝗈𝗎𝗋c𝖾 W𝗁𝗂𝗍𝖾 𝖣𝖺𝖾𝖻 .',url="https://t.me/rsrrsrr"}},
+{{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 .',url="https://t.me/rsrrsrr"}},
 }
 }
 UserInfo = bot.getUser(msg.sender_id.user_id).first_name
@@ -23992,7 +23992,7 @@ local reply_markup = bot.replyMarkup{
 type = 'inline',
 data = {
 {
-{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇 https://t.me/rsrrsrr', url = 't.me/rsrrsrr'}, 
+{text = '- 𝖲𝗈𝗎𝗋c𝖾 𝖳𝗈𝗇', url = 't.me/rsrrsrr'}, 
 },
 }
 }
