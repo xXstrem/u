@@ -4964,7 +4964,7 @@ end
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
 {{text = '-  اضفني الى مجموعتك .',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
-{{text = 'ᯓ ƚᥱᥲ️꧑ ᥉ꪀᥲ️ρ .',url="t.me/DarkThon"}},
+{{text = 'Source DarkThon',url="t.me/DarkThon"}},
 }
 }
 if redis:get(bot_id..":start") then
