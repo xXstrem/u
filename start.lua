@@ -4235,7 +4235,7 @@ if Text == "Updates" then
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تحديث البوت ›',data="UpBot"},{text = '‹ تحديث السورس ›',data="UpSu"}},
-{{text = '‹ قناة التحديثات ›',url="t.me/inFo_ProX"}},
+{{text = '‹ قناة التحديثات ›',url="t.me/rssrsrr"}},
 {{text = '‹ رجوع ›',data="Can"}},
 }
 }
