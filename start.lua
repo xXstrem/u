@@ -24353,32 +24353,125 @@ redis:del(bot_id..":PinMsegees:"..msg.chat_id)
 end
 end
 end
-elseif data and data.luatele and data.luatele == "updateNewInlineCallbackQuery" then
-local Text = bot.base64_decode(data.payload.data)
-if Text and Text:match('/Hmsa1@(%d+)@(%d+)/(%d+)') then
-local ramsesadd = {string.match(Text,"^/Hmsa1@(%d+)@(%d+)/(%d+)$")}
-if tonumber(data.sender_user_id) == tonumber(ramsesadd[1]) or tonumber(ramsesadd[2]) == tonumber(data.sender_user_id) then
-local inget = redis:get(bot_id..'hmsabots'..ramsesadd[3]..data.sender_user_id)
-https.request("https://api.telegram.org/bot"..Token..'/answerCallbackQuery?callback_query_id='..data.id..'&text='..URL.escape(inget)..'&show_alert=true')
-else
-https.request("https://api.telegram.org/bot"..Token..'/answerCallbackQuery?callback_query_id='..data.id..'&text='..URL.escape('𖦹 هذه الهمسه ليست لك 𖦹')..'&show_alert=true')
+local function send_welcome_message(chat_id)
+  local welcome_message = "• للبدء في استخدام البوت، ارسل قم بعمل رد على العضو الذي تريد ان تهمس له وارسل كلمه 'همسه' بعدها اضغط على 'اضغط هنا' وأرسل رسالتك."
+  local url = "https://api.telegram.org/bot"..Token.."/sendMessage"
+  local response = https.request(url, {
+      method = "POST",
+      headers = { ["Content-Type"] = "application/json" },
+      data = JSON.encode({
+          chat_id = chat_id,
+          text = welcome_message,
+          parse_mode = "Markdown",
+          reply_markup = JSON.encode({
+              inline_keyboard = {{
+                  { text = "أضغط هنا", callback_data = "programs" }
+              }}
+          })
+      })
+  })
 end
+
+local function send_response(chat_id, Ahmed_info, Ahmed_id)
+  local to_id = tonumber(Ahmed_info:match("to(%d+)in"))
+  local from_id = tonumber(Ahmed_info:match("Ahmed(%d+)to"))
+  local in_id = tonumber(Ahmed_info:match("in(%d+)"))
+  local to_url = "tg://openmessage?user_id="..to_id
+  local from_url = "tg://openmessage?user_id="..from_id
+  
+  Ahmedes[Ahmed_id] = {Ahmed = message.text, bar = in_id, to = to_id, from = from_id}
+  
+  local message_text = "• المستخدم ["..app.get_chat(to_id).first_name.."]("..to_url..")\n• اجتك همسة من ["..app.get_chat(from_id).first_name.."]("..from_url..")\n• انت فقط من يستطيع رؤيتها 🔐"
+  local url = "https://api.telegram.org/bot"..Token.."/sendMessage"
+  local response = https.request(url, {
+      method = "POST",
+      headers = { ["Content-Type"] = "application/json" },
+      data = JSON.encode({
+          chat_id = in_id,
+          text = message_text,
+          parse_mode = "Markdown",
+          reply_markup = JSON.encode({
+              inline_keyboard = {{
+                  { text = "عرض الهمسة 👀", callback_data = "Ahmed_answer_"..Ahmed_id }
+              }}
+          })
+      })
+  })
+  
+  -- حذف الرسالة الأصلية بعد إرسال الهمسة
+  local delete_url = "https://api.telegram.org/bot"..Token.."/deleteMessage"
+  local delete_response = https.request(delete_url, {
+      method = "POST",
+      headers = { ["Content-Type"] = "application/json" },
+      data = JSON.encode({
+          chat_id = chat_id,
+          message_id = message.message_id
+      })
+  })
 end
-elseif data and data.luatele and data.luatele == "updateNewInlineQuery" then
-local Text = data.query
-if Text and Text:match("^(.*) @(.*)$")  then
-local username = {string.match(Text,"^(.*) @(.*)$")}
-local UserId_Info = bot.searchPublicChat(username[2])
-if UserId_Info.id then
-local idnum = math.random(1,64)
-local input_message_content = {message_text = 'هذه الهمسه للحلو ( [@'..username[2]..'] ) هو اللي يقدر يشوفها 📧', parse_mode = 'Markdown'}	
-local reply_markup = {inline_keyboard={{{text = 'فتح الهمسه 📬', callback_data = '/Hmsa1@'..data.sender_user_id..'@'..UserId_Info.id..'/'..idnum}}}}	
-local resuult = {{type = 'article', id = idnum, title = 'هذه همسه سريه الى [@'..username[2]..']', input_message_content = input_message_content, reply_markup = reply_markup}}	
-https.request("https://api.telegram.org/bot"..Token..'/answerInlineQuery?inline_query_id='..data.id..'&results='..JSON.encode(resuult))
-redis:set(bot_id..'hmsabots'..idnum..UserId_Info.id,username[1])
-redis:set(bot_id..'hmsabots'..idnum..data.sender_user_id,username[1])
+
+function on_callback_query(callback)
+  local data = callback.data
+  
+  -- تحقق من بيانات زر الانلاين
+  if data:match("programs") then
+      send_welcome_message(callback.message.chat.id)
+  elseif data:match("Ahmed_answer_") then
+      local Ahmed_id = data:match("Ahmed_answer_(.+)")
+      local Ahmed_data = Ahmedes[Ahmed_id]
+      
+      if Ahmed_data and Ahmed_data.bar == callback.message.chat.id and (Ahmed_data.to == callback.from_user.id or Ahmed_data.from == callback.from_user.id) then
+          callback.answer(Ahmed_data.Ahmed, true)
+      else
+          callback.answer("الهمسة ليست لك لذلك لا يمكنك رؤيتها", true)
+      end
+  elseif data:match("Ahmed_cancel") then
+      app.edit_message_text(callback.message.chat.id, callback.message.message_id, "• تم الغاء الهمسة ")
+  end
 end
+
+function on_message(message)
+  local text = message.text
+  local sender_id = message.from_user.id
+  local reply_to_message = message.reply_to_message
+  
+  -- التأكد من أن الرسالة ليست موجهة إلى البوت نفسه
+  if reply_to_message and reply_to_message.from_user.id == app.get_me().id then
+      message.reply_text("يحمار ماتكدر تهمس للبوت")
+      return
+  end
+  
+  -- تحقق مما إذا كانت الرسالة تحتوي على "همسة" وتم الرد على رسالة
+  if text and text:match("همسه") and reply_to_message then
+      local receiver_id = reply_to_message.from_user.id
+      
+      -- إذا كانت الرسالة تحتوي على "همسة" وتم تحديد المرسل والمستلم
+      if sender_id and receiver_id then
+          local callback_message = "يرجى الرد على هذا الزر لإرسال رد خاص:"
+          local callback_data = "send_response_" .. sender_id .. "_" .. receiver_id
+          
+          -- إنشاء زر انلاين للمستلم
+          local keyboard = {
+              inline_keyboard = {{
+                  { text = "رد", callback_data = callback_data }
+              }}
+          }
+          
+          -- إرسال الرسالة وإضافة الزر انلاين
+          local send_url = "https://api.telegram.org/bot"..Token.."/sendMessage"
+          local send_response = https.request(send_url, {
+              method = "POST",
+              headers = { ["Content-Type"] = "application/json" },
+              data = JSON.encode({
+                  chat_id = receiver_id,
+                  text = text,
+                  reply_markup = JSON.encode(keyboard)
+              })
+          })
+      end
+  end
 end
+
 
 elseif data and data.luatele and data.luatele == "updateNewCallbackQuery" then
 Callback(data)
