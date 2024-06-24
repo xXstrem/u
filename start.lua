@@ -8283,7 +8283,7 @@ type = 'inline',data = {
 }
 bot.sendText(msg.chat_id,msg.id,'*بوت الزخرفه*',"md", true, false, false, false, reply_markup)
 end
-if text == 'همسه' or text == 'همسة' or text == 'بوت همسه' or text == 'بوت الهمسه' or text == 'ه' then
+if text == 'هه' or text == 'همسة' or text == 'بوت همسه' or text == 'بوت الهمسه' or text == 'ه' then
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
 {{text = '‹ اضغط هنا ›',url="t.me/MGQBoT"}},
@@ -17876,7 +17876,7 @@ redis:del(bot_id.."Status:aktbas"..msg.chat_id)
 bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تعطيل الاقتباسات *").by,"md",true)
 end
 
-if text== "همسه"  or text == "همسة" then
+if text== "هه"  or text == "همسة" then
 return bot.sendText(msg.chat_id,msg.id,"- اهلا بك عزيزي\n- اكتب معرف البوت ثم الرساله ثم معرف الشخص\n- مثال\n@ooi0bot مرحبا @qq8qq")
 end
 
