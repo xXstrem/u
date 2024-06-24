@@ -1912,15 +1912,15 @@ bot.deleteMessages(chat_id,{[1]= msg_id})
 end
 end
 
-if Text and Text:match('(%d+)/tuofe1') then
-local UserId = Text:match('(%d+)/tuofe1')
+if Text and Text:match('(%d+)/ton1') then
+local UserId = Text:match('(%d+)/ton1')
 if tonumber(data.sender_user_id) == tonumber(UserId) then
 Abs = math.random(74,139);
 local Text ='لقلبك الابتسامة 🥰'
 keyboard = {}
 keyboard.inline_keyboard = {
 {
-{text = '‹ نكته اخرى ›', callback_data =data.sender_user_id..'/tuofe1'}, 
+{text = '‹ نكته اخرى ›', callback_data =data.sender_user_id..'/ton1'}, 
 },
 }
 https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. chat_id .. '&photo=https://t.me/ox963/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
@@ -16319,7 +16319,7 @@ local Text ='- دوم الابتسامة 😚 . '
 local MsgId = msg.id/2097152/0.5
 local MSGID = string.gsub(MsgId,'.0','')
 keyboard = {}  
-keyboard.inline_keyboard = {{{text = '‹ نكته اخرى ›',callback_data = msg.sender_id.user_id..'/tuofe1'}}} 
+keyboard.inline_keyboard = {{{text = '‹ نكته اخرى ›',callback_data = msg.sender_id.user_id..'/ton1'}}} 
 local msg_id = msg.id/2097152/0.5 
 https.request("https://api.telegram.org/bot"..Token..'/sendanimation?chat_id=' .. msg.chat_id .. '&animation=https://t.me/ox963/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..MsgId.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
