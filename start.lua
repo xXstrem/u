@@ -23741,6 +23741,11 @@ if text then
       local searchQuery = text:match("^بحث (.*)$")
       local videoTitles = searchYouTube(searchQuery)
 
+      if #videoTitles == 0 then
+          bot.sendText(msg.chat_id, msg.id, "- لا يوجد نتائج للبحث.")
+          return
+      end
+
       local datar = {data = {{text = "➡️", data ="serchy#" .. msg.sender_id.user_id .. "#7#11#" .. searchQuery .. "#" .. msg.id}}}
       for i, title in ipairs(videoTitles) do
           datar[i] = {{text = title, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
@@ -23754,6 +23759,7 @@ if text then
       bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'.. searchQuery ..'"', "md", false, false, false, false, reply_markup)
   end
 end
+
 
 
 
