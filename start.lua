@@ -1025,7 +1025,7 @@ data = json:decode(url)
 return data 
 end
 function sEndDon(url)
-local get = io.popen('curl -s "https://www.youtube.com/results?search_query='..URL.escape(url)..'"'):read('*a')
+local get = io.popen('curl -s "https://black-source.xyz/Api/Yu.php?do='..URL.escape(url)..'"'):read('*a')
 local InfoVid = JSON.decode(get)
 return InfoVid["Info"]["voice"]
 end
@@ -1040,73 +1040,51 @@ Text = bot.base64_decode(data.payload.data)
 user_id = data.sender_user_id
 chat_id = data.chat_id
 msg_id = data.message_id
-
 if Text and Text:match("^DownloadY#(.*)#(.*)#(.*)") then
-    local infomsg = {Text:match("^DownloadY#(.*)#(.*)#(.*)")}
-    if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
-        bot.answerCallbackQuery(data.id, "- الأمر لا يخصك.", true)
-        return false
-    end  
-
-    bot.editMessageText(chat_id, msg_id, "- يرجى الانتظار قليلاً...")
-
-    local url = infomsg[2]
-    local reply_to_message_id = infomsg[3]
-
-    -- إذا كان هناك خطأ في تنفيذ الطلب
-    if sEndDon(url) == "not" then
-        bot.editMessageText(chat_id, msg_id, "- عذراً، حدث خطأ.")
-    else
-        -- إرسال الملف الصوتي مع الوصف المحدد
-        send("sendVoice", {
-            chat_id = chat_id,
-            voice = url,
-            caption = "- تم تحميل الأغنية بنجاح.",
-            reply_to_message_id = reply_to_message_id,
-            parse_mode = "markdown"
-        })
-        return bot.editMessageText(chat_id, msg_id, "- تم التحميل بنجاح.")
-    end
+local infomsg = {Text:match("^DownloadY#(.*)#(.*)#(.*)")}
+if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
+bot.answerCallbackQuery(data.id, "- الامر لا يخصك .", true)
+return false
+end  
+bot.editMessageText(chat_id,msg_id,"- انتظر قليلا من فضلك `. .. .`", 'md')
+if sEndDon(infomsg[2]) == "not" then
+bot.editMessageText(chat_id,msg_id,"*- عذراً حدث خطأ ما .*", 'md')
+else
+send("sendVoice",{
+chat_id=chat_id,
+voice=sEndDon(infomsg[2]),
+caption=("- تم تحميل الاغنيه بنجاح ."),
+reply_to_message_id=infomsg[3],
+parse_mode="markdown",
+---reply_markup=markup(nil,{{{text = 'ʙʟᴀᴄᴋ',url="t.me/UBBBB"}}})
+})
+return bot.editMessageText(chat_id,msg_id,'- تم التحميل ✔')
 end
-
+end
 if Text and Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)") then
-  local infomsg = {Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)")}
-  if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
-      bot.answerCallbackQuery(data.id, "- الأمر لا يخصك.", true)
-      return false
-  end  
-
-  bot.answerCallbackQuery(data.id, "- يرجى الانتظار...")
-
-  -- استخدام الرابط المباشر للبحث عن مقاطع الفيديو على YouTube
-  local search_term = infomsg[4]
-  local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search_term)
-  local get = io.popen('curl -s "' .. url .. '"'):read('*a')
-  local json = JSON.decode(get)
-
-  local sdata = {}
-
-  -- تحديد أسماء الأغاني بشكل صحيح
-  for i = tonumber(infomsg[2]), tonumber(infomsg[3]) do
-      sdata[i] = {{text = json['Info']['Title'][i], data = "DownloadY#" .. data.sender_user_id .. "#" .. json['Info']['Id'][i] .. "#" .. infomsg[5]}}
-  end
-
-  -- إضافة زر للتنقل بين الصفحات
-  if infomsg[2] == '2' then
-      sdata[8] = {{text="➡️", data="serchy#" .. data.sender_user_id .. "#7#11#" .. search_term .. "#" .. infomsg[5]}}
-  else
-      sdata[8] = {{text="⬅️", data="serchy#" .. data.sender_user_id .. "#2#6#" .. search_term .. "#" .. infomsg[5]}}
-  end
-
-  local reply_markup = bot.replyMarkup{
-      type = 'inline',
-      data = sdata
-  }
-
-  return bot.editMessageText(chat_id, msg_id, '- نتائج البحث لـ "' .. search_term .. '"', 'md', true, false, reply_markup)
+local infomsg = {Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)")}
+if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
+bot.answerCallbackQuery(data.id, "- الامر لا يخصك .", true)
+return false
+end  
+bot.answerCallbackQuery(data.id, "- انتظر .. .", true)
+local get = io.popen('curl -s "https://black-source.xyz/Api/serch.php/?serch='..URL.escape(infomsg[4])..'"'):read('*a')
+local json = JSON.decode(get)
+sdata = {}
+for i = infomsg[2],infomsg[3] do
+sdata[i] = {{text =json['Info']['Title'][i],data ="DownloadY#"..data.sender_user_id.."#"..json['Info']['Id'][i].."#"..infomsg[5]}}
 end
-
-
+if infomsg[2] == '2' then
+sdata[7] = {{text="➡️",data="serchy#"..data.sender_user_id.."#7#11#"..infomsg[4].."#"..infomsg[5]}}
+else
+sdata[7] = {{text="⬅️",data="serchy#"..data.sender_user_id.."#2#6#"..infomsg[4].."#"..infomsg[5]}}
+end
+local reply_markup = bot.replyMarkup{
+type = 'inline',
+data = sdata
+}
+return bot.editMessageText(chat_id,msg_id,'- نتائج البحث لـ "'..infomsg[4]..'"', 'md', true, false, reply_markup)
+end
 if Text and Text:match("^marriage_(.*)_(.*)_(.*)_(.*)") then
 local infomsg = {Text:match("^marriage_(.*)_(.*)_(.*)_(.*)")}
 if tonumber(data.sender_user_id) ~= tonumber(infomsg[2]) then
@@ -17717,14 +17695,14 @@ if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:set(bot_id.."youutube"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تفعيل اليوتيوب*").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- عذراء اليوتيوب متوقف حاليا *").by,"md",true)
 end
 if text == 'تعطيل اليوتيوب' or text == 'تعطيل يوتيوب' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:del(bot_id.."youutube"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- عذراً اليوتيوب متوقف حاليا *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- عذراء اليوتيوب متوقف حاليا *").by,"md",true)
 end
 if text == 'تفعيل ضع رتبه' then
 if not Administrator(msg) then
@@ -23725,22 +23703,22 @@ return bot.sendText(msg.chat_id,msg.id,"["..list[math.random(#list)].."]","md",t
 end  
 ----------------------------------------------------------------------------------------------------
 if text then
-  if text:match("^بحث (.*)$") then
-      local search = text:match("^بحث (.*)$")
-      local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search)
-      local get = io.popen('curl -s "' .. url .. '"'):read('*a')
-      local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
-      for i = 1,5 do
-          datar[i] = {{text = "عنوان الفيديو " .. i, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
-      end
-      local reply_markup = bot.replyMarkup{
-          type = 'inline',
-          data = datar
-      }
-      bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'..search..'"', "md", false, false, false, false, reply_markup)
-  end
+if text:match("^بحث (.*)$") then
+local search = text:match("^بحث (.*)$")
+local get = io.popen('curl -s "https://black-source.xyz/Api/serch.php/?serch='..URL.escape(search)..'"'):read('*a')
+local json = JSON.decode(get)
+local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
+for i = 1,5 do
+datar[i] = {{text =json['Info']['Title'][i],data ="DownloadY#"..msg.sender_id.user_id.."#"..json['Info']['Id'][i].."#"..msg.id}}
+datar[i] = {{text = json.Info.Title[i],data ="DownloadY#"..msg.sender_id.user_id.."#"..json.Info.Id[i].."#"..msg.id}}
 end
-
+local reply_markup = bot.replyMarkup{
+type = 'inline',
+data = datar
+}
+bot.sendText(msg.chat_id,msg.id,'- نتائج البحث لـ "'..search..'"',"md",false, false, false, false, reply_markup)
+end
+end
 
 ---------------------------------------------------------------------------------------------------
 end
