@@ -23724,29 +23724,22 @@ local list = redis:smembers(bot_id.."Add:Rd:array:Textt"..text)
 return bot.sendText(msg.chat_id,msg.id,"["..list[math.random(#list)].."]","md",true)  
 end  
 ----------------------------------------------------------------------------------------------------
-function searchYouTube(query)
-  local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(query)
-  local get = io.popen('curl -s "' .. url .. '"'):read('*a')
-
-  local videos = {}
-  for title in get:gmatch('<a href="/watch%?v=.-">(.-)</a>') do
-      table.insert(videos, title)
-  end
-
-  return videos
-end
-
 if text then
   if text:match("^بحث (.*)$") then
-      local searchQuery = text:match("^بحث (.*)$")
-      local videoTitles = searchYouTube(searchQuery)
+      local search = text:match("^بحث (.*)$")
+      local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search)
+      local get = io.popen('curl -s "' .. url .. '"'):read('*a')
+      local datar = {data = {{text = "➡️", data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
+      local videoTitles = {}
+      for title in get:gmatch('<a href="/watch%?v=.-">(.-)</a>') do
+          table.insert(videoTitles, title)
+      end
 
       if #videoTitles == 0 then
-          bot.sendText(msg.chat_id, msg.id, "- لا يوجد نتائج للبحث.")
+          bot.sendText(msg.chat_id, msg.id, "- لم يتم العثور على أي نتائج للبحث.")
           return
       end
 
-      local datar = {data = {{text = "➡️", data ="serchy#" .. msg.sender_id.user_id .. "#7#11#" .. searchQuery .. "#" .. msg.id}}}
       for i, title in ipairs(videoTitles) do
           datar[i] = {{text = title, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
       end
@@ -23755,11 +23748,9 @@ if text then
           type = 'inline',
           data = datar
       }
-
-      bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'.. searchQuery ..'"', "md", false, false, false, false, reply_markup)
+      bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'..search..'"', "md", false, false, false, false, reply_markup)
   end
 end
-
 
 
 
