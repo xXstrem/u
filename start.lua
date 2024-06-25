@@ -4235,7 +4235,7 @@ if Text == "Updates" then
 reply_dev = bot.replyMarkup{
 type = 'inline',data = {
 	{{text = '‹ تحديث البوت ›',data="UpBot"},{text = '‹ تحديث السورس ›',data="UpSu"}},
-{{text = '‹ قناة التحديثات ›',url="t.me/rssrsrr"}},
+{{text = '‹ قناة التحديثات ›',url="t.me/zqqqzq"}},
 {{text = '‹ رجوع ›',data="Can"}},
 }
 }
@@ -4963,7 +4963,7 @@ u = 'F_T_Y'
 end
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
-{{text = '-  اضفني الى مجموعتك .',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
+{{text = 'اضيفني لـ مجموعتك 🧚‍♀️',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
 {{text = 'تحديثات جمان 🍻',url="t.me/zqqqzq"}},
 }
 }
@@ -14803,6 +14803,8 @@ local NamecBots = {
 'هااا',
 'هلا ؟',
 'ياخي شتبي/ن',
+'احبك',
+'عمر جمان',
 }
 return bot.sendText(msg.chat_id,msg.id, NamecBots[math.random(#NamecBots)],"md",true)  
 end
