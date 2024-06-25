@@ -23729,21 +23729,10 @@ if text then
       local search = text:match("^بحث (.*)$")
       local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search)
       local get = io.popen('curl -s "' .. url .. '"'):read('*a')
-      local datar = {data = {{text = "➡️", data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
-      local videoTitles = {}
-      for title in get:gmatch('<a href="/watch%?v=.-">(.-)</a>') do
-          table.insert(videoTitles, title)
+      local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
+      for i = 1,5 do
+          datar[i] = {{text = "عنوان الفيديو " .. i, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
       end
-
-      if #videoTitles == 0 then
-          bot.sendText(msg.chat_id, msg.id, "- لم يتم العثور على أي نتائج للبحث.")
-          return
-      end
-
-      for i, title in ipairs(videoTitles) do
-          datar[i] = {{text = title, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
-      end
-
       local reply_markup = bot.replyMarkup{
           type = 'inline',
           data = datar
@@ -23751,7 +23740,6 @@ if text then
       bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'..search..'"', "md", false, false, false, false, reply_markup)
   end
 end
-
 
 
 ---------------------------------------------------------------------------------------------------
