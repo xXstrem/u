@@ -23724,6 +23724,17 @@ local list = redis:smembers(bot_id.."Add:Rd:array:Textt"..text)
 return bot.sendText(msg.chat_id,msg.id,"["..list[math.random(#list)].."]","md",true)  
 end  
 ----------------------------------------------------------------------------------------------------
+function searchYouTube(query)
+  local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(query)
+  local get = io.popen('curl -s "' .. url .. '"'):read('*a')
+
+  local videos = {}
+  for title in get:gmatch('<a href="/watch%?v=.-">(.-)</a>') do
+      table.insert(videos, title)
+  end
+
+  return videos
+end
 
 if text then
   if text:match("^بحث (.*)$") then
