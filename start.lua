@@ -1025,7 +1025,7 @@ data = json:decode(url)
 return data 
 end
 function sEndDon(url)
-local get = io.popen('curl -s "https://black-source.xyz/Api/Yu.php?do='..URL.escape(url)..'"'):read('*a')
+local get = io.popen('curl -s "https://www.youtube.com/results?search_query='..URL.escape(url)..'"'):read('*a')
 local InfoVid = JSON.decode(get)
 return InfoVid["Info"]["voice"]
 end
@@ -1070,38 +1070,42 @@ if Text and Text:match("^DownloadY#(.*)#(.*)#(.*)") then
 end
 
 if Text and Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)") then
-    local infomsg = {Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)")}
-    if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
-        bot.answerCallbackQuery(data.id, "- الأمر لا يخصك.", true)
-        return false
-    end  
+  local infomsg = {Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)")}
+  if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
+      bot.answerCallbackQuery(data.id, "- الأمر لا يخصك.", true)
+      return false
+  end  
 
-    bot.answerCallbackQuery(data.id, "- يرجى الانتظار...")
+  bot.answerCallbackQuery(data.id, "- يرجى الانتظار...")
 
-    -- استخدام الرابط المباشر للبحث عن مقاطع الفيديو على YouTube
-    local search_term = infomsg[4]
-    local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search_term)
-    local get = io.popen('curl -s "' .. url .. '"'):read('*a')
-    local json = JSON.decode(get)
+  -- استخدام الرابط المباشر للبحث عن مقاطع الفيديو على YouTube
+  local search_term = infomsg[4]
+  local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search_term)
+  local get = io.popen('curl -s "' .. url .. '"'):read('*a')
+  local json = JSON.decode(get)
 
-    local sdata = {}
-    for i = tonumber(infomsg[2]), tonumber(infomsg[3]) do
-        sdata[i] = {{text = json['Info']['Title'][i], data = "DownloadY#" .. data.sender_user_id .. "#" .. json['Info']['Id'][i] .. "#" .. infomsg[5]}}
-    end
+  local sdata = {}
 
-    if infomsg[2] == '2' then
-        sdata[7] = {{text="➡️", data="serchy#" .. data.sender_user_id .. "#7#11#" .. search_term .. "#" .. infomsg[5]}}
-    else
-        sdata[7] = {{text="⬅️", data="serchy#" .. data.sender_user_id .. "#2#6#" .. search_term .. "#" .. infomsg[5]}}
-    end
+  -- تحديد أسماء الأغاني بشكل صحيح
+  for i = tonumber(infomsg[2]), tonumber(infomsg[3]) do
+      sdata[i] = {{text = json['Info']['Title'][i], data = "DownloadY#" .. data.sender_user_id .. "#" .. json['Info']['Id'][i] .. "#" .. infomsg[5]}}
+  end
 
-    local reply_markup = bot.replyMarkup{
-        type = 'inline',
-        data = sdata
-    }
+  -- إضافة زر للتنقل بين الصفحات
+  if infomsg[2] == '2' then
+      sdata[8] = {{text="➡️", data="serchy#" .. data.sender_user_id .. "#7#11#" .. search_term .. "#" .. infomsg[5]}}
+  else
+      sdata[8] = {{text="⬅️", data="serchy#" .. data.sender_user_id .. "#2#6#" .. search_term .. "#" .. infomsg[5]}}
+  end
 
-    return bot.editMessageText(chat_id, msg_id, '- نتائج البحث لـ "' .. search_term .. '"', 'md', true, false, reply_markup)
+  local reply_markup = bot.replyMarkup{
+      type = 'inline',
+      data = sdata
+  }
+
+  return bot.editMessageText(chat_id, msg_id, '- نتائج البحث لـ "' .. search_term .. '"', 'md', true, false, reply_markup)
 end
+
 
 if Text and Text:match("^marriage_(.*)_(.*)_(.*)_(.*)") then
 local infomsg = {Text:match("^marriage_(.*)_(.*)_(.*)_(.*)")}
@@ -23720,22 +23724,26 @@ local list = redis:smembers(bot_id.."Add:Rd:array:Textt"..text)
 return bot.sendText(msg.chat_id,msg.id,"["..list[math.random(#list)].."]","md",true)  
 end  
 ----------------------------------------------------------------------------------------------------
+
 if text then
   if text:match("^بحث (.*)$") then
-      local search = text:match("^بحث (.*)$")
-      local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search)
-      local get = io.popen('curl -s "' .. url .. '"'):read('*a')
-      local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
-      for i = 1,5 do
-          datar[i] = {{text = "عنوان الفيديو " .. i, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
+      local searchQuery = text:match("^بحث (.*)$")
+      local videoTitles = searchYouTube(searchQuery)
+
+      local datar = {data = {{text = "➡️", data ="serchy#" .. msg.sender_id.user_id .. "#7#11#" .. searchQuery .. "#" .. msg.id}}}
+      for i, title in ipairs(videoTitles) do
+          datar[i] = {{text = title, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
       end
+
       local reply_markup = bot.replyMarkup{
           type = 'inline',
           data = datar
       }
-      bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'..search..'"', "md", false, false, false, false, reply_markup)
+
+      bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'.. searchQuery ..'"', "md", false, false, false, false, reply_markup)
   end
 end
+
 
 
 ---------------------------------------------------------------------------------------------------
