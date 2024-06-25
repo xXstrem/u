@@ -1040,51 +1040,69 @@ Text = bot.base64_decode(data.payload.data)
 user_id = data.sender_user_id
 chat_id = data.chat_id
 msg_id = data.message_id
+
 if Text and Text:match("^DownloadY#(.*)#(.*)#(.*)") then
-local infomsg = {Text:match("^DownloadY#(.*)#(.*)#(.*)")}
-if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
-bot.answerCallbackQuery(data.id, "- الامر لا يخصك .", true)
-return false
-end  
-bot.editMessageText(chat_id,msg_id,"- انتظر قليلا من فضلك `. .. .`", 'md')
-if sEndDon(infomsg[2]) == "not" then
-bot.editMessageText(chat_id,msg_id,"*- عذراً حدث خطأ ما .*", 'md')
-else
-send("sendVoice",{
-chat_id=chat_id,
-voice=sEndDon(infomsg[2]),
-caption=("- تم تحميل الاغنيه بنجاح ."),
-reply_to_message_id=infomsg[3],
-parse_mode="markdown",
----reply_markup=markup(nil,{{{text = 'ʙʟᴀᴄᴋ',url="t.me/UBBBB"}}})
-})
-return bot.editMessageText(chat_id,msg_id,'- تم التحميل ✔')
+    local infomsg = {Text:match("^DownloadY#(.*)#(.*)#(.*)")}
+    if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
+        bot.answerCallbackQuery(data.id, "- الأمر لا يخصك.", true)
+        return false
+    end  
+
+    bot.editMessageText(chat_id, msg_id, "- يرجى الانتظار قليلاً...")
+
+    local url = infomsg[2]
+    local reply_to_message_id = infomsg[3]
+
+    -- إذا كان هناك خطأ في تنفيذ الطلب
+    if sEndDon(url) == "not" then
+        bot.editMessageText(chat_id, msg_id, "- عذراً، حدث خطأ.")
+    else
+        -- إرسال الملف الصوتي مع الوصف المحدد
+        send("sendVoice", {
+            chat_id = chat_id,
+            voice = url,
+            caption = "- تم تحميل الأغنية بنجاح.",
+            reply_to_message_id = reply_to_message_id,
+            parse_mode = "markdown"
+        })
+        return bot.editMessageText(chat_id, msg_id, "- تم التحميل بنجاح.")
+    end
 end
-end
+
 if Text and Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)") then
-local infomsg = {Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)")}
-if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
-bot.answerCallbackQuery(data.id, "- الامر لا يخصك .", true)
-return false
-end  
-bot.answerCallbackQuery(data.id, "- انتظر .. .", true)
-local get = io.popen('curl -s "https://black-source.xyz/Api/serch.php/?serch='..URL.escape(infomsg[4])..'"'):read('*a')
-local json = JSON.decode(get)
-sdata = {}
-for i = infomsg[2],infomsg[3] do
-sdata[i] = {{text =json['Info']['Title'][i],data ="DownloadY#"..data.sender_user_id.."#"..json['Info']['Id'][i].."#"..infomsg[5]}}
+    local infomsg = {Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)")}
+    if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
+        bot.answerCallbackQuery(data.id, "- الأمر لا يخصك.", true)
+        return false
+    end  
+
+    bot.answerCallbackQuery(data.id, "- يرجى الانتظار...")
+
+    -- استخدام الرابط المباشر للبحث عن مقاطع الفيديو على YouTube
+    local search_term = infomsg[4]
+    local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search_term)
+    local get = io.popen('curl -s "' .. url .. '"'):read('*a')
+    local json = JSON.decode(get)
+
+    local sdata = {}
+    for i = tonumber(infomsg[2]), tonumber(infomsg[3]) do
+        sdata[i] = {{text = json['Info']['Title'][i], data = "DownloadY#" .. data.sender_user_id .. "#" .. json['Info']['Id'][i] .. "#" .. infomsg[5]}}
+    end
+
+    if infomsg[2] == '2' then
+        sdata[7] = {{text="➡️", data="serchy#" .. data.sender_user_id .. "#7#11#" .. search_term .. "#" .. infomsg[5]}}
+    else
+        sdata[7] = {{text="⬅️", data="serchy#" .. data.sender_user_id .. "#2#6#" .. search_term .. "#" .. infomsg[5]}}
+    end
+
+    local reply_markup = bot.replyMarkup{
+        type = 'inline',
+        data = sdata
+    }
+
+    return bot.editMessageText(chat_id, msg_id, '- نتائج البحث لـ "' .. search_term .. '"', 'md', true, false, reply_markup)
 end
-if infomsg[2] == '2' then
-sdata[7] = {{text="➡️",data="serchy#"..data.sender_user_id.."#7#11#"..infomsg[4].."#"..infomsg[5]}}
-else
-sdata[7] = {{text="⬅️",data="serchy#"..data.sender_user_id.."#2#6#"..infomsg[4].."#"..infomsg[5]}}
-end
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = sdata
-}
-return bot.editMessageText(chat_id,msg_id,'- نتائج البحث لـ "'..infomsg[4]..'"', 'md', true, false, reply_markup)
-end
+
 if Text and Text:match("^marriage_(.*)_(.*)_(.*)_(.*)") then
 local infomsg = {Text:match("^marriage_(.*)_(.*)_(.*)_(.*)")}
 if tonumber(data.sender_user_id) ~= tonumber(infomsg[2]) then
@@ -1735,79 +1753,83 @@ end
 end
 
 if Text and Text:match('(%d+)dl/(.*)') then
-  local xd = {Text:match('(%d+)dl/(.*)')}
-  local UserId = xd[1]
-  local id = xd[2]
-  if tonumber(data.sender_user_id) == tonumber(UserId) then
-      local get = io.popen('curl -s "https://iiiivvvv.aba.vg/apii/yytt.php?search='..id..'"'):read('*a')
-      local json = require("dkjson").decode(get)
-      local reply_markup = bot.replyMarkup{
-          type = 'inline',
-          data = {
-              {
-                  {text = 'تحميل صوت', data = data.sender_user_id..'sound/'..id}, 
-                  {text = 'تحميل فيديو', data = data.sender_user_id..'video/'..id}, 
-              },
-              {
-                  {text = 'تحديثات جمان 🍻', url = 't.me/zqqqzq'},
-              },
-          }
-      }
-      local txx = "["..json.title.."](http://youtu.be/"..id..")"
-      bot.editMessageText(chat_id, msg_id, txx, 'md', true, false, reply_markup)
-  else
-      bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
-  end
+local xd = {Text:match('(%d+)dl/(.*)')}
+local UserId = xd[1]
+local id = xd[2]
+if tonumber(data.sender_user_id) == tonumber(UserId) then
+local get = io.popen('curl -s "https://iiiivvvv.aba.vg/apii/yytt.php?search='..id..'"'):read('*a')
+local json = json:decode(get)
+local reply_markup = bot.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = 'تحميل صوت', data = data.sender_user_id..'sound/'..id}, {text = 'تحميل فيديو', data = data.sender_user_id..'video/'..id}, 
+},
+{
+{text = 'تحديثات جمان 🍻', url = 't.me/zqqqzq'},
+},
+}
+}
+local txx = "["..json.title.."](http://youtu.be/"..id..""
+bot.editMessageText(chat_id,msg_id,txx, 'md', true, false, reply_markup)
+else
+bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
 end
-
+end
 if Text and Text:match('(%d+)sound/(.*)') then
-  local xd = {Text:match('(%d+)sound/(.*)')}
-  local UserId = xd[1]
-  local id = xd[2]
-  if tonumber(data.sender_user_id) == tonumber(UserId) then
-      local u = bot.getUser(data.sender_user_id)
-      local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=360&vid='..id..'&type=mp3"'):read('*a')
-      local json = require("dkjson").decode(get)
-      local link = "http://www.youtube.com/watch?v="..id
-      local title = json.title:gsub("[/%\n|'\"]", "-")
-      local time = json.t
-      local p = json.a:gsub("[/%\n|'\"]", "-")
-      bot.deleteMessages(chat_id, {[1] = msg_id})
-
-      -- Ensure yt-dlp is installed
-      os.execute("curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp")
-      os.execute("chmod a+rx /usr/local/bin/yt-dlp")
-
-      os.execute("yt-dlp "..link.." -f 251 -o '"..title..".mp3'")
-      bot.sendAudio(chat_id, 0, './'..title..'.mp3', "- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]", "md", tostring(time), title, p)
-      os.remove(""..title..".mp3")
-  else
-      bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
-  end
+local xd = {Text:match('(%d+)sound/(.*)')}
+local UserId = xd[1]
+local id = xd[2]
+if tonumber(data.sender_user_id) == tonumber(UserId) then
+local u = bot.getUser(data.sender_user_id)
+local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=360&vid='..id..'&type=mp3"'):read('*a')
+local json = json:decode(get)
+local link = "http://www.youtube.com/watch?v="..id
+local title = json.title
+local title = title:gsub("/","-") 
+local title = title:gsub("\n","-") 
+local title = title:gsub("|","-") 
+local title = title:gsub("'","-") 
+local title = title:gsub('"',"-") 
+local time = json.t
+local p = json.a
+local p = p:gsub("/","-") 
+local p = p:gsub("\n","-") 
+local p = p:gsub("|","-") 
+local p = p:gsub("'","-") 
+local p = p:gsub('"',"-") 
+bot.deleteMessages(chat_id,{[1]= msg_id})
+os.execute("yt-dlp "..link.." -f 251 -o '"..title..".mp3'")
+bot.sendAudio(chat_id,0,'./'..title..'.mp3',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]","md",tostring(time),title,p) 
+sleep(2)
+os.remove(""..title..".mp3")
+else
+bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
 end
-
+end
 if Text and Text:match('(%d+)video/(.*)') then
-  local xd = {Text:match('(%d+)video/(.*)')}
-  local UserId = xd[1]
-  local id = xd[2]
-  if tonumber(data.sender_user_id) == tonumber(UserId) then
-      local u = bot.getUser(data.sender_user_id)
-      local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=720p&vid='..id..'&type=mp4"'):read('*a')
-      local json = require("dkjson").decode(get)
-      local link = "http://www.youtube.com/watch?v="..id
-      local title = json.title:gsub("[/%\n|'\"]", "-")
-      bot.deleteMessages(chat_id, {[1] = msg_id})
-
-      -- Ensure yt-dlp is installed
-      os.execute("curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp")
-      os.execute("chmod a+rx /usr/local/bin/yt-dlp")
-
-      os.execute("yt-dlp "..link.." -f 18 -o '"..title..".mp4'")
-      bot.sendVideo(chat_id, 0, './'..title..'.mp4', "- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]", "md")
-      os.remove(""..title..".mp4")
-  else
-      bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
-  end
+local xd = {Text:match('(%d+)video/(.*)')}
+local UserId = xd[1]
+local id = xd[2]
+if tonumber(data.sender_user_id) == tonumber(UserId) then
+local u = bot.getUser(data.sender_user_id)
+local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=720p&vid='..id..'&type=mp4"'):read('*a')
+local json = json:decode(get)
+local link = "http://www.youtube.com/watch?v="..id
+local title = json.title
+local title = title:gsub("/","-") 
+local title = title:gsub("\n","-") 
+local title = title:gsub("|","-") 
+local title = title:gsub("'","-") 
+local title = title:gsub('"',"-") 
+bot.deleteMessages(chat_id,{[1]= msg_id})
+os.execute("yt-dlp "..link.." -f 18 -o '"..title..".mp4'")
+bot.sendVideo(chat_id,0,'./'..title..'.mp4',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]","md") 
+sleep(4)
+os.remove(""..title..".mp4")
+else
+bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
+end
 end
 
 if Text and Text:match('(%d+)/kanele') then
@@ -23699,22 +23721,22 @@ return bot.sendText(msg.chat_id,msg.id,"["..list[math.random(#list)].."]","md",t
 end  
 ----------------------------------------------------------------------------------------------------
 if text then
-if text:match("^بحث (.*)$") then
-local search = text:match("^بحث (.*)$")
-local get = io.popen('curl -s "https://black-source.xyz/Api/serch.php/?serch='..URL.escape(search)..'"'):read('*a')
-local json = JSON.decode(get)
-local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
-for i = 1,5 do
-datar[i] = {{text =json['Info']['Title'][i],data ="DownloadY#"..msg.sender_id.user_id.."#"..json['Info']['Id'][i].."#"..msg.id}}
-datar[i] = {{text = json.Info.Title[i],data ="DownloadY#"..msg.sender_id.user_id.."#"..json.Info.Id[i].."#"..msg.id}}
+  if text:match("^بحث (.*)$") then
+      local search = text:match("^بحث (.*)$")
+      local url = 'https://www.youtube.com/results?search_query=' .. URL.escape(search)
+      local get = io.popen('curl -s "' .. url .. '"'):read('*a')
+      local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
+      for i = 1,5 do
+          datar[i] = {{text = "عنوان الفيديو " .. i, data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. i .. "#" .. msg.id}}
+      end
+      local reply_markup = bot.replyMarkup{
+          type = 'inline',
+          data = datar
+      }
+      bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "'..search..'"', "md", false, false, false, false, reply_markup)
+  end
 end
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = datar
-}
-bot.sendText(msg.chat_id,msg.id,'- نتائج البحث لـ "'..search..'"',"md",false, false, false, false, reply_markup)
-end
-end
+
 
 ---------------------------------------------------------------------------------------------------
 end
