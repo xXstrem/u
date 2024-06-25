@@ -1735,83 +1735,79 @@ end
 end
 
 if Text and Text:match('(%d+)dl/(.*)') then
-local xd = {Text:match('(%d+)dl/(.*)')}
-local UserId = xd[1]
-local id = xd[2]
-if tonumber(data.sender_user_id) == tonumber(UserId) then
-local get = io.popen('curl -s "https://iiiivvvv.aba.vg/apii/yytt.php?search='..id..'"'):read('*a')
-local json = json:decode(get)
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = 'تحميل صوت', data = data.sender_user_id..'sound/'..id}, {text = 'تحميل فيديو', data = data.sender_user_id..'video/'..id}, 
-},
-{
-{text = 'تحديثات جمان 🍻', url = 't.me/zqqqzq'},
-},
-}
-}
-local txx = "["..json.title.."](http://youtu.be/"..id..""
-bot.editMessageText(chat_id,msg_id,txx, 'md', true, false, reply_markup)
-else
-bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
+  local xd = {Text:match('(%d+)dl/(.*)')}
+  local UserId = xd[1]
+  local id = xd[2]
+  if tonumber(data.sender_user_id) == tonumber(UserId) then
+      local get = io.popen('curl -s "https://iiiivvvv.aba.vg/apii/yytt.php?search='..id..'"'):read('*a')
+      local json = require("dkjson").decode(get)
+      local reply_markup = bot.replyMarkup{
+          type = 'inline',
+          data = {
+              {
+                  {text = 'تحميل صوت', data = data.sender_user_id..'sound/'..id}, 
+                  {text = 'تحميل فيديو', data = data.sender_user_id..'video/'..id}, 
+              },
+              {
+                  {text = 'تحديثات جمان 🍻', url = 't.me/zqqqzq'},
+              },
+          }
+      }
+      local txx = "["..json.title.."](http://youtu.be/"..id..")"
+      bot.editMessageText(chat_id, msg_id, txx, 'md', true, false, reply_markup)
+  else
+      bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
+  end
 end
-end
+
 if Text and Text:match('(%d+)sound/(.*)') then
-local xd = {Text:match('(%d+)sound/(.*)')}
-local UserId = xd[1]
-local id = xd[2]
-if tonumber(data.sender_user_id) == tonumber(UserId) then
-local u = bot.getUser(data.sender_user_id)
-local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=360&vid='..id..'&type=mp3"'):read('*a')
-local json = json:decode(get)
-local link = "http://www.youtube.com/watch?v="..id
-local title = json.title
-local title = title:gsub("/","-") 
-local title = title:gsub("\n","-") 
-local title = title:gsub("|","-") 
-local title = title:gsub("'","-") 
-local title = title:gsub('"',"-") 
-local time = json.t
-local p = json.a
-local p = p:gsub("/","-") 
-local p = p:gsub("\n","-") 
-local p = p:gsub("|","-") 
-local p = p:gsub("'","-") 
-local p = p:gsub('"',"-") 
-bot.deleteMessages(chat_id,{[1]= msg_id})
-os.execute("yt-dlp "..link.." -f 251 -o '"..title..".mp3'")
-bot.sendAudio(chat_id,0,'./'..title..'.mp3',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]","md",tostring(time),title,p) 
-sleep(2)
-os.remove(""..title..".mp3")
-else
-bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
+  local xd = {Text:match('(%d+)sound/(.*)')}
+  local UserId = xd[1]
+  local id = xd[2]
+  if tonumber(data.sender_user_id) == tonumber(UserId) then
+      local u = bot.getUser(data.sender_user_id)
+      local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=360&vid='..id..'&type=mp3"'):read('*a')
+      local json = require("dkjson").decode(get)
+      local link = "http://www.youtube.com/watch?v="..id
+      local title = json.title:gsub("[/%\n|'\"]", "-")
+      local time = json.t
+      local p = json.a:gsub("[/%\n|'\"]", "-")
+      bot.deleteMessages(chat_id, {[1] = msg_id})
+
+      -- Ensure yt-dlp is installed
+      os.execute("curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp")
+      os.execute("chmod a+rx /usr/local/bin/yt-dlp")
+
+      os.execute("yt-dlp "..link.." -f 251 -o '"..title..".mp3'")
+      bot.sendAudio(chat_id, 0, './'..title..'.mp3', "- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]", "md", tostring(time), title, p)
+      os.remove(""..title..".mp3")
+  else
+      bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
+  end
 end
-end
+
 if Text and Text:match('(%d+)video/(.*)') then
-local xd = {Text:match('(%d+)video/(.*)')}
-local UserId = xd[1]
-local id = xd[2]
-if tonumber(data.sender_user_id) == tonumber(UserId) then
-local u = bot.getUser(data.sender_user_id)
-local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=720p&vid='..id..'&type=mp4"'):read('*a')
-local json = json:decode(get)
-local link = "http://www.youtube.com/watch?v="..id
-local title = json.title
-local title = title:gsub("/","-") 
-local title = title:gsub("\n","-") 
-local title = title:gsub("|","-") 
-local title = title:gsub("'","-") 
-local title = title:gsub('"',"-") 
-bot.deleteMessages(chat_id,{[1]= msg_id})
-os.execute("yt-dlp "..link.." -f 18 -o '"..title..".mp4'")
-bot.sendVideo(chat_id,0,'./'..title..'.mp4',"- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]","md") 
-sleep(4)
-os.remove(""..title..".mp4")
-else
-bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
-end
+  local xd = {Text:match('(%d+)video/(.*)')}
+  local UserId = xd[1]
+  local id = xd[2]
+  if tonumber(data.sender_user_id) == tonumber(UserId) then
+      local u = bot.getUser(data.sender_user_id)
+      local get = io.popen('curl -s "https://axx.aba.vg/api/yt.php?q=720p&vid='..id..'&type=mp4"'):read('*a')
+      local json = require("dkjson").decode(get)
+      local link = "http://www.youtube.com/watch?v="..id
+      local title = json.title:gsub("[/%\n|'\"]", "-")
+      bot.deleteMessages(chat_id, {[1] = msg_id})
+
+      -- Ensure yt-dlp is installed
+      os.execute("curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp")
+      os.execute("chmod a+rx /usr/local/bin/yt-dlp")
+
+      os.execute("yt-dlp "..link.." -f 18 -o '"..title..".mp4'")
+      bot.sendVideo(chat_id, 0, './'..title..'.mp4', "- ["..title.."]("..link..")\n- بواسطة ["..u.first_name.."](tg://user?id="..data.sender_user_id..") \n[@zqqqzq]", "md")
+      os.remove(""..title..".mp4")
+  else
+      bot.answerCallbackQuery(data.id, "- هذا الامر لا يخصك ", true)
+  end
 end
 
 if Text and Text:match('(%d+)/kanele') then
@@ -17695,14 +17691,14 @@ if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:set(bot_id.."youutube"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- عذراء اليوتيوب متوقف حاليا *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تفعيل اليوتيوب*").by,"md",true)
 end
 if text == 'تعطيل اليوتيوب' or text == 'تعطيل يوتيوب' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:del(bot_id.."youutube"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- عذراء اليوتيوب متوقف حاليا *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- عذراً اليوتيوب متوقف حاليا *").by,"md",true)
 end
 if text == 'تفعيل ضع رتبه' then
 if not Administrator(msg) then
