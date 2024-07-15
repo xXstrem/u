@@ -24387,6 +24387,203 @@ else
 https.request("https://api.telegram.org/bot"..Token..'/answerCallbackQuery?callback_query_id='..data.id..'&text='..URL.escape('𖦹 هذه الهمسه ليست لك 𖦹')..'&show_alert=true')
 end
 end
+local tdbot = require('tdbot')
+local json = require('json')
+local uuid = require('uuid')
+
+local api_id = 25630277
+local api_hash = "6dd2b6175097d351da602b892b1ecf65"
+local bot_token = "6355996025:AAEfLhsiuCbLKWOhrk7iyVJyZZbGNp0nByU"
+local allowed_user_id = 5413631898
+local Ahmedes = {}
+local waiting_for_Ahmed = false
+local Ahmed_info = ""
+local Ahmed_id = ""
+local group_ids = {}
+
+-- Load group IDs from file
+local function load_group_ids()
+    local file = io.open('group_ids.json', 'r')
+    if file then
+        local content = file:read('*a')
+        file:close()
+        return json.decode(content)
+    end
+    return {}
+end
+
+-- Save group IDs to file
+local function save_group_ids(group_ids)
+    local file = io.open('group_ids.json', 'w')
+    file:write(json.encode(group_ids))
+    file:close()
+end
+
+group_ids = load_group_ids()
+
+-- Handler for new messages
+tdbot.on('updateNewMessage', function(msg)
+    local message = msg.message
+    if message and message.content and message.content.text then
+        local text = message.content.text.text
+        if message.is_reply and text:match("%b(همسه|همسة|ه)") and message.chat_id < 0 then
+            tdbot_function({
+                ['@type'] = 'getMe'
+            }, function(me)
+                if message.reply_to_message.sender_user_id == me.id then
+                    tdbot.sendMessage(message.chat_id, message.id, 0, "يحمار ماتكدر تهمس للبوت", 0)
+                else
+                    local user_id = message.reply_to_message.sender_user_id
+                    local my_id = message.sender_user_id
+                    local bar_id = message.chat_id
+                    local start_link = "https://t.me/" .. me.username .. "?start=Ahmed" .. my_id .. "to" .. user_id .. "in" .. bar_id
+                    local reply_markup = {
+                        ['@type'] = 'replyMarkupInlineKeyboard',
+                        ['rows'] = {
+                            {
+                                {
+                                    ['@type'] = 'inlineKeyboardButtonUrl',
+                                    ['text'] = 'أضغط هنا',
+                                    ['url'] = start_link
+                                }
+                            }
+                        }
+                    }
+                    tdbot.sendMessage(message.chat_id, message.id, 0, "اضغط لأرسال همستك", 0, reply_markup)
+                end
+            end)
+        end
+    end
+end)
+
+tdbot.on('callbackQuery', function(callback_query)
+    local data = callback_query.data
+    if data == "programs" then
+        local welcome_message = "• للبدء في استخدام البوت، ارسل قم بعمل رد على العضو الذي تريد ان تهمس له وارسل كلمه ' `همسه` ' بعدها اضغط على ' اضغط هنا ' وأرسل رسالتك .\n• يمكنك اضافتي لمجموعتك واستخدامي بشكل سريع ومجاني ."
+        tdbot.sendMessage(callback_query.message.chat_id, 0, 0, welcome_message, 0)
+    elseif data:match("Ahmed_answer_") then
+        local Ahmed_id = data:match("Ahmed_answer_(.+)")
+        local Ahmed_data = Ahmedes[Ahmed_id]
+        if Ahmed_data then
+            if Ahmed_data.bar == callback_query.message.chat_id and (Ahmed_data.to == callback_query.from.id or Ahmed_data.from == callback_query.from.id) then
+                tdbot.answerCallbackQuery(callback_query.id, Ahmed_data.Ahmed, true)
+            else
+                tdbot.answerCallbackQuery(callback_query.id, "الهمسه ليست لك لذلك لا يمكنك رؤيتها", true)
+            end
+        else
+            tdbot.answerCallbackQuery(callback_query.id, "الهمسه غير موجودة أو تم حذفها", true)
+        end
+    elseif data == "Ahmed_cancel" then
+        waiting_for_Ahmed = false
+        tdbot.editMessageText(callback_query.message.chat_id, callback_query.message.id, 0, "• تم الغاء الهمسة ", 0)
+    end
+end)
+
+tdbot.on('updateNewMessage', function(msg)
+    local message = msg.message
+    if message and message.content and message.content.text then
+        local text = message.content.text.text
+        if text:match("^/start") then
+            if not text:match("Ahmed") then
+                local add_to_group_link = "https://t.me/S_1idbot?startgroup=true"
+                local test_button_text = "طريقة الاستخدام"
+                local welcome_message = "• مرحبا بك في بوت الهمسه \n• اضغط على زر الاستخدام لمعرفة كيفية استخدام البوت"
+                local reply_markup = {
+                    ['@type'] = 'replyMarkupInlineKeyboard',
+                    ['rows'] = {
+                        {
+                            {
+                                ['@type'] = 'inlineKeyboardButtonUrl',
+                                ['text'] = 'أضفني لمجموعتك',
+                                ['url'] = add_to_group_link
+                            },
+                            {
+                                ['@type'] = 'inlineKeyboardButtonCallback',
+                                ['text'] = test_button_text,
+                                ['data'] = 'programs'
+                            }
+                        }
+                    }
+                }
+                tdbot.sendMessage(message.chat_id, message.id, 0, welcome_message, 0, reply_markup)
+            else
+                Ahmed_info = text
+                Ahmed_id = uuid()
+                waiting_for_Ahmed = true
+                local reply_markup = {
+                    ['@type'] = 'replyMarkupInlineKeyboard',
+                    ['rows'] = {
+                        {
+                            {
+                                ['@type'] = 'inlineKeyboardButtonCallback',
+                                ['text'] = '• الغاء الهمسة',
+                                ['data'] = 'Ahmed_cancel'
+                            }
+                        }
+                    }
+                }
+                tdbot.sendMessage(message.chat_id, message.id, 0, "أرسل همستك", 0, reply_markup)
+            end
+        elseif text == "/تحديث" and message.chat_id < 0 and message.sender_user_id == allowed_user_id then
+            tdbot.sendMessage(message.chat_id, message.id, 0, "- تم تحديث البوت شكرا لك مطوري", 0)
+        elseif message.chat_id > 0 and text ~= "/start" then
+            if waiting_for_Ahmed then
+                local to_id = tonumber(Ahmed_info:match("to(%d+)"))
+                local from_id = tonumber(Ahmed_info:match("Ahmed(%d+)"))
+                local in_id = tonumber(Ahmed_info:match("in(%d+)"))
+                local to_url = "tg://openmessage?user_id=" .. to_id
+                local from_url = "tg://openmessage?user_id=" .. from_id
+                
+                Ahmedes[Ahmed_id] = {
+                    Ahmed = text,
+                    bar = in_id,
+                    to = to_id,
+                    from = from_id
+                }
+                
+                tdbot.sendMessage(message.chat_id, message.id, 0, "• تم إرسال همستك", 0)
+                
+                tdbot.sendMessage(in_id, 0, 0, "• المستخدم [" .. to_id .. "](" .. to_url .. ")\n• اجتك همسة من [" .. from_id .. "](" .. from_url .. ")\n• انت فقط من يستطيع رؤيتها 🔐", 0, {
+                    ['@type'] = 'replyMarkupInlineKeyboard',
+                    ['rows'] = {
+                        {
+                            {
+                                ['@type'] = 'inlineKeyboardButtonCallback',
+                                ['text'] = 'عرض الهمسة 👀',
+                                ['data'] = 'Ahmed_answer_' .. Ahmed_id
+                            }
+                        }
+                    }
+                })
+                
+                waiting_for_Ahmed = false
+            end
+        end
+    end
+end)
+
+tdbot.on('updateChatMember', function(update)
+    if update.new_chat_member then
+        local group_id = update.chat_id
+        if not table.contains(group_ids, group_id) then
+            table.insert(group_ids, group_id)
+            save_group_ids(group_ids)
+        end
+    elseif update.left_chat_member then
+        local group_id = update.chat_id
+        if table.contains(group_ids, group_id) then
+            table.remove(group_ids, group_id)
+            save_group_ids(group_ids)
+        end
+    end
+end)
+
+if tdbot.start(bot_token) then
+    print("Bot started successfully")
+else
+    print("Failed to start bot")
+end
+
 elseif data and data.luatele and data.luatele == "updateNewInlineQuery" then
 local Text = data.query
 if Text and Text:match("^(.*) @(.*)$")  then
