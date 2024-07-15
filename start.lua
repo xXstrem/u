@@ -6684,7 +6684,7 @@ type = 'inline',data = {
 {{text = "‹ 1 ›" ,data="Amr_"..msg.sender_id.user_id.."_1"},{text ="‹ 2 ›",data="Amr_"..msg.sender_id.user_id.."_2"}},
 {{text ="‹ 3 ›",data="Amr_"..msg.sender_id.user_id.."_3"}},
 {{text ="‹ 4 ›",data="Amr_"..msg.sender_id.user_id.."_4"},{text ="‹ 5 ›",data="Amr_"..msg.sender_id.user_id.."_6"}},
-
+{{text ="‹ 6 ›",data="Amr_"..data.sender_user_id.."_7"},{text ="‹ 7 ›",data="Amr_"..data.sender_user_id.."_9"}},
 }
 }
 bot.sendText(msg.chat_id,msg.id,"*- اوامر البوت الرئيسيه .\n * ٴ— — — — — — — — —*\n- م1 (اوامر الحمايه ) .\n- م2 ( اوامر الاعدادات ) .\n- م3 ( اوامر المدراء ) .\n- م4 ( اوامر اخرى ) .\n- م5 ( اوامر المالكين ) .\n- م6 ( اوامر التسليه ) .\n- م7 ( اوامر البنك ) .*","md", true, false, false, false, reply_markup)
