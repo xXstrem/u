@@ -16658,15 +16658,15 @@ local RinkBot = Get_Rank(msg.chat_id,UserId_Info.id)
 return bot.sendText(msg.chat_id,msg.id,RinkBot, "md")
 end
 
-if text and text:match("^قول (.*)$") then
+if text and text:match("^كول (.*)$") then
 if redis:get(bot_id.."Abs:kol:Abs"..msg.chat_id) then
-return bot.sendText(msg.chat_id,msg.id, text:match('قول (.*)'),"md",true)  
+return bot.sendText(msg.chat_id,msg.id, text:match('كول (.*)'),"md",true)  
 end
 end
 
-if text and text:match("^قولي (.*)$") then
+if text and text:match("^كولي (.*)$") then
 if redis:get(bot_id.."Abs:kol:Abs"..msg.chat_id) then
-return bot.sendText(msg.chat_id,msg.id, text:match('قولي (.*)'),"md",true)  
+return bot.sendText(msg.chat_id,msg.id, text:match('كولي (.*)'),"md",true)  
 end
 end
 
@@ -17779,34 +17779,34 @@ end
 redis:del(bot_id.."Abs:Addme:Abs"..msg.chat_id) 
 bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تعطيل مين ضافني *").by,"md",true)
 end
-if text == 'تفعيل قولي' then
+if text == 'تفعيل كولي' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:set(bot_id.."Abs:kol:Abs"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تفعيل قولي *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تفعيل كولي *").by,"md",true)
 end
-if text == 'تعطيل قولي' then
+if text == 'تعطيل كولي' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:del(bot_id.."Abs:kol:Abs"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تعطيل قولي *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تعطيل كولي *").by,"md",true)
 end
 
-if text == 'تفعيل قول' then
+if text == 'تفعيل كول' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:set(bot_id.."Abs:kol:Abs"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تفعيل قول *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تفعيل كول *").by,"md",true)
 end
-if text == 'تعطيل قول' then
+if text == 'تعطيل كول' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*- عذراً الامر يخص الادمن فقط .* ',"md",true)  
 end
 redis:del(bot_id.."Abs:kol:Abs"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تعطيل قول *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*- تم تعطيل كول *").by,"md",true)
 end
 
 if text == 'تفعيل الزخرفه' then
