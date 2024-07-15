@@ -14446,6 +14446,25 @@ local NamecBots = {
 'صج والله',
 'تعال خاص نغازل بعض اكثر',
 'يخيي زوجوناا ',
+'وانا بعد احبج',
+'اثقل',
+'لو انك نايم ابرك لك',
+'طيب',
+'روحها',
+'احبج وكأن الكون اوصاني عليج.',
+'بدينا كذب',
+'اشوف صواريخ تطاير',
+}
+return bot.sendText(msg.chat_id,msg.id, NamecBots[math.random(#NamecBots)],"md",true)  
+end
+end
+if text == 'احبج' then
+if redis:get(bot_id.."Status:Reply"..msg.chat_id) then
+local NamecBots = {
+'‏وخر عني',
+'صج والله',
+'تعال خاص نغازل بعض اكثر',
+'يخيي زوجوناا ',
 'وانا بعد احبك',
 'اثقل',
 'لو انك نايم ابرك لك',
