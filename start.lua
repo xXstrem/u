@@ -9566,249 +9566,189 @@ if redis:ttl(bot_id.."iioo" .. msg.sender_id.user_id) >=60 then
 local hours = redis:ttl(bot_id.."iioo" .. msg.sender_id.user_id) / 60
 return bot.sendText(msg.chat_id,msg.id,"- من شوي اخذت رشوة استنى "..math.floor(hours).." دقيقة","md",true)
 end
-if redis:ttl(bot_id.."polrsho" .. msg.sender_id.user_id) >=60 then
-local hours = redis:ttl(bot_id.."polrsho" .. msg.sender_id.user_id) / 60
-return bot.sendText(msg.chat_id,msg.id,"- انتا بالسجن 🏤\n- استنى "..math.floor(hours).." دقيقة\n","md",true)
+if redis:ttl(bot_id.."polrsho" .. msg.sender_id.user_id) >= 60 then
+  local hours = redis:ttl(bot_id.."polrsho" .. msg.sender_id.user_id) / 60
+  return bot.sendText(msg.chat_id, msg.id, "- انتا بالسجن 🏤\n- استنى "..math.floor(hours).." دقيقة\n", "md", true)
 end
-shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
+
+local shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
 if shkse == "طيبة" then
-return bot.sendText(msg.chat_id,msg.id, "- شخصيتك طيبة ماتكدر تاخذ رشوة","md",true)
+  return bot.sendText(msg.chat_id, msg.id, "- شخصيتك طيبة ماتكدر تاخذ رشوة", "md", true)
 end
-local daddd = {"1", "2", "3", "4",}
+
+local daddd = {"1", "2", "3", "4"}
 local haddd = daddd[math.random(#daddd)]
 if haddd == "1" or haddd == "2" or haddd == "3" then
-local jjjo = math.random(200,7000);
-ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
-bakigcj = ballanceed + jjjo
-redis:set(bot_id.."boob"..msg.sender_id.user_id , bakigcj)
-bot.sendText(msg.chat_id,msg.id,"- هذه رشوة بطل زرف "..jjjo.." دينار 💵","md",true)
-redis:setex(bot_id.."iioo" .. msg.sender_id.user_id,620, true)
+  local jjjo = math.random(200, 7000)
+  local ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+  local bakigcj = ballanceed + jjjo
+  redis:set(bot_id.."boob"..msg.sender_id.user_id, bakigcj)
+  bot.sendText(msg.chat_id, msg.id, "- هذه رشوة بطل زرف "..jjjo.." دينار 💵", "md", true)
+  redis:setex(bot_id.."iioo" .. msg.sender_id.user_id, 620, true)
 else
-redis:setex(bot_id.."polrsho" .. msg.sender_id.user_id,320, true)
-bot.sendText(msg.chat_id,msg.id, "- مسكتك الشرطة وانتا ترتشي 🚔\n","md",true)
+  redis:setex(bot_id.."polrsho" .. msg.sender_id.user_id, 320, true)
+  bot.sendText(msg.chat_id, msg.id, "- مسكتك الشرطة وانت ترتشي 🚔\n", "md", true)
 end
-else
-bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
-end
-end
+
 if text == 'بخشيش' or text == 'بقشيش' then
-local reply_markup = bot.replyMarkup{
-type = 'inline',data = {
-{{text = 'اخفاء ',data ="https://t.me/delAmr"}},
-}
-}
-ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
-if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
-if redis:ttl(bot_id.."iioo" .. msg.sender_id.user_id) >=60 then
-local hours = redis:ttl(bot_id.."iioo" .. msg.sender_id.user_id) / 60
-return bot.sendText(msg.chat_id,msg.id,"- من شوي اخذت بخشيش استنى "..math.floor(hours).." دقيقة","md",true, false, false, false, reply_markup)
+  local reply_markup = bot.replyMarkup{
+      type = 'inline', data = {
+          {{text = 'اخفاء', data ="https://t.me/delAmr"}},
+      }
+  }
+  local ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+  if redis:sismember(bot_id.."booob", msg.sender_id.user_id) then
+      if redis:ttl(bot_id.."iioo" .. msg.sender_id.user_id) >= 60 then
+          local hours = redis:ttl(bot_id.."iioo" .. msg.sender_id.user_id) / 60
+          return bot.sendText(msg.chat_id, msg.id, "- من شوي اخذت بخشيش استنى "..math.floor(hours).." دقيقة", "md", true, false, false, false, reply_markup)
+      end
+      local shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
+      if shkse == "شريرة" then
+          return bot.sendText(msg.chat_id, msg.id, "- شخصيتك شريرة ماتكدر تاخذ بخشيش", "md", true, false, false, false, reply_markup)
+      end
+      local jjjo = math.random(200, 5000)
+      local ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+      local bakigcj = ballanceed + jjjo
+      redis:set(bot_id.."boob"..msg.sender_id.user_id, bakigcj)
+      bot.sendText(msg.chat_id, msg.id, "- تكرم وهي بخشيش "..jjjo.." دينار 💵", "md", true, false, false, false, reply_markup)
+      redis:setex(bot_id.."iioo" .. msg.sender_id.user_id, 620, true)
+  else
+      bot.sendText(msg.chat_id, msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )", "md", true, false, false, false, reply_markup)
+  end
 end
-shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
-if shkse == "شريرة" then
-return bot.sendText(msg.chat_id,msg.id, "- شخصيتك شريرة ماتكدر تاخذ بخشيش","md",true, false, false, false, reply_markup)
-end
-local jjjo = math.random(200,5000);
-ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
-bakigcj = ballanceed + jjjo
-redis:set(bot_id.."boob"..msg.sender_id.user_id , bakigcj)
-bot.sendText(msg.chat_id,msg.id,"- تكرم وهي بخشيش "..jjjo.." دينار 💵","md",true, false, false, false, reply_markup)
-redis:setex(bot_id.."iioo" .. msg.sender_id.user_id,620, true)
-else
-bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true, false, false, false, reply_markup)
-end
-end
+
 if text == 'زرف' and tonumber(msg.reply_to_message_id) == 0 then
-local reply_markup = bot.replyMarkup{
-type = 'inline',data = {
-{{text = 'اخفاء ',data ="https://t.me/delAmr"}},
-}
-}
-ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
-bot.sendText(msg.chat_id,msg.id, "استعمل الامر كذا :\n\n`زرف` بالرد","md",true, false, false, false, reply_markup)
-return false
+  local reply_markup = bot.replyMarkup{
+      type = 'inline', data = {
+          {{text = 'اخفاء', data ="https://t.me/delAmr"}},
+      }
+  }
+  local ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+  bot.sendText(msg.chat_id, msg.id, "استعمل الامر كذا :\n\n`زرف` بالرد", "md", true, false, false, false, reply_markup)
+  return false
 end
----------------------------------------------------------
 
---------------------------------------------------------------------
 if text == 'زرف' or text == 'زرفو' or text == 'زرفه' and tonumber(msg.reply_to_message_id) ~= 0 then
-local reply_markup = bot.replyMarkup{
-type = 'inline',data = {
-{{text = 'اخفاء ',data ="https://t.me/delAmr"}},
-}
-}
-ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
-if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
-shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
-if shkse == "طيبة" then
-return bot.sendText(msg.chat_id,msg.id, "- شخصيتك طيبة ماتكدر تزرف العالم","md",true, false, false, false, reply_markup)
-end
-local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
-local UserInfo = bot.getUser(Remsg.sender_id.user_id)
-if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true, false, false, false, reply_markup)
-return false
-end
-if Remsg.sender_id.user_id == msg.sender_id.user_id then
-bot.sendText(msg.chat_id,msg.id,"\n*- بدك تزرف نفسك 🤡*","md",true, false, false, false, reply_markup)  
-return false
-end
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-if redis:ttl(bot_id.."polic" .. msg.sender_id.user_id) >=60 then
-local hours = redis:ttl(bot_id.."polic" .. msg.sender_id.user_id) / 60
-return bot.sendText(msg.chat_id,msg.id,"- انتا بالسجن 🏤 استنى "..math.floor(hours).." دقائق\n","md",true, false, false, false, reply_markup)
-end
-if redis:ttl(bot_id.."hrame" .. Remsg.sender_id.user_id) >=60 then
-local hours = redis:ttl(bot_id.."hrame" .. Remsg.sender_id.user_id) / 60
-return bot.sendText(msg.chat_id,msg.id,"- ذا المسكين مزروف قبل شوي\n- يمديك تزرفه بعد "..math.floor(hours).." دقيقة","md",true, false, false, false, reply_markup)
-end
-if redis:sismember(bot_id.."booob",Remsg.sender_id.user_id) then
-ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
-if tonumber(ballanceed) < 199 then
-return bot.sendText(msg.chat_id,msg.id, "- ماتكدر تزرفه فلوسه اقل من 200 دينار 💵","md",true, false, false, false, reply_markup)
-end
-shkseto = redis:get(bot_id.."shkse"..Remsg.sender_id.user_id)
-if shkseto == "طيبة" then
-local hrame = math.floor(math.random() * 200) + 1;
-local ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
-local ballancope = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
-zrfne = ballanceed - hrame
-zrfnee = ballancope + hrame
-redis:set(bot_id.."boob"..msg.sender_id.user_id , math.floor(zrfnee))
-redis:set(bot_id.."boob"..Remsg.sender_id.user_id , math.floor(zrfne))
-redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id,620, true)
-local zoropeo = redis:get(bot_id.."rrfff"..msg.sender_id.user_id) or 0
-zoroprod = zoropeo + hrame
-redis:set(bot_id.."rrfff"..msg.sender_id.user_id,zoroprod)
-redis:sadd(bot_id.."rrfffid",msg.sender_id.user_id)
-local ban = bot.getUser(Remsg.sender_id.user_id)
-if ban.first_name then
-news = "["..ban.first_name.."](tg://user?id="..ban.id..")"
-else
-news = " لا يوجد اسم"
-end
-redis:set(bot_id.."msrokid"..msg.chat_id..Remsg.sender_id.user_id,Remsg.sender_id.user_id)
-redis:set(bot_id.."hrameid"..msg.chat_id..Remsg.sender_id.user_id,msg.sender_id.user_id)
-redis:set(bot_id.."balcmsrok"..msg.chat_id..Remsg.sender_id.user_id,hrame)
-redis:setex(bot_id.."timehrame"..msg.chat_id..msg.sender_id.user_id,30, true)
-bot.deleteMessages(msg.chat_id,{[1]= msg.id})
-bot.sendText(msg.chat_id,0, "- "..news.." في حرامي زرفك "..hrame.." دينار 💵\n- رد عليه بكلمة ( شرطه )\n- معك 30 ثانية\n","md",true, false, false, false, reply_markup)
-else
-local hrame = math.floor(math.random() * 200) + 1;
-local ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
-local ballancope = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
-zrfne = ballanceed - hrame
-zrfnee = ballancope + hrame
-redis:set(bot_id.."boob"..msg.sender_id.user_id , math.floor(zrfnee))
-redis:set(bot_id.."boob"..Remsg.sender_id.user_id , math.floor(zrfne))
-redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id,620, true)
-local zoropeo = redis:get(bot_id.."rrfff"..msg.sender_id.user_id) or 0
-zoroprod = zoropeo + hrame
-redis:set(bot_id.."rrfff"..msg.sender_id.user_id,zoroprod)
-redis:sadd(bot_id.."rrfffid",msg.sender_id.user_id)
-bot.sendText(msg.chat_id,msg.id, "- خذ يالحرامي زرفته "..hrame.." دينار 💵\n","md",true, false, false, false, reply_markup)
-end
-else
-bot.sendText(msg.chat_id,msg.id, "- ماعنده حساب بنكي ","md",true, false, false, false, reply_markup)
-end
-else
-bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true, false, false, false, reply_markup)
-end
+  local reply_markup = bot.replyMarkup{
+      type = 'inline', data = {
+          {{text = 'اخفاء', data ="https://t.me/delAmr"}},
+      }
+  }
+  local ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+  if redis:sismember(bot_id.."booob", msg.sender_id.user_id) then
+      local shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
+      if shkse == "طيبة" then
+          return bot.sendText(msg.chat_id, msg.id, "- شخصيتك طيبة ماتكدر تزرف العالم", "md", true, false, false, false, reply_markup)
+      end
+      local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
+      local UserInfo = bot.getUser(Remsg.sender_id.user_id)
+      if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
+          bot.sendText(msg.chat_id, msg.id, "\n*- تون ماعندها حساب بالبنك 🤣*", "md", true, false, false, false, reply_markup)
+          return false
+      end
+      if Remsg.sender_id.user_id == msg.sender_id.user_id then
+          bot.sendText(msg.chat_id, msg.id, "\n*- بدك تزرف نفسك 🤡*", "md", true, false, false, false, reply_markup)
+          return false
+      end
+
+      if redis:ttl(bot_id.."polic" .. msg.sender_id.user_id) >= 60 then
+          local hours = redis:ttl(bot_id.."polic" .. msg.sender_id.user_id) / 60
+          return bot.sendText(msg.chat_id, msg.id, "- انتا بالسجن 🏤 استنى "..math.floor(hours).." دقائق\n", "md", true, false, false, false, reply_markup)
+      end
+      if redis:ttl(bot_id.."hrame" .. Remsg.sender_id.user_id) >= 60 then
+          local hours = redis:ttl(bot_id.."hrame" .. Remsg.sender_id.user_id) / 60
+          return bot.sendText(msg.chat_id, msg.id, "- ذا المسكين مزروف قبل شوي\n- يمديك تزرفه بعد "..math.floor(hours).." دقيقة", "md", true, false, false, false, reply_markup)
+      end
+      if redis:sismember(bot_id.."booob", Remsg.sender_id.user_id) then
+          local ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
+          if tonumber(ballanceed) < 199 then
+              return bot.sendText(msg.chat_id, msg.id, "- ماتكدر تزرفه فلوسه اقل من 200 دينار 💵", "md", true, false, false, false, reply_markup)
+          end
+          local shkseto = redis:get(bot_id.."shkse"..Remsg.sender_id.user_id)
+          if shkseto == "طيبة" then
+              local hrame = math.floor(math.random() * 200) + 1
+              local ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
+              local ballancope = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+              local zrfne = ballanceed - hrame
+              local zrfnee = ballancope + hrame
+              redis:set(bot_id.."boob"..msg.sender_id.user_id, math.floor(zrfnee))
+              redis:set(bot_id.."boob"..Remsg.sender_id.user_id, math.floor(zrfne))
+              redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id, 620, true)
+              local zoropeo = redis:get(bot_id.."rrfff"..msg.sender_id.user_id) or 0
+              local zoroprod = zoropeo + hrame
+              redis:set(bot_id.."rrfff"..msg.sender_id.user_id, zoroprod)
+              redis:sadd(bot_id.."rrfffid", msg.sender_id.user_id)
+              local ban = bot.getUser(Remsg.sender_id.user_id)
+              local news = ban.first_name and "["..ban.first_name.."](tg://user?id="..ban.id..")" or " لا يوجد اسم"
+              redis:set(bot_id.."msrokid"..msg.chat_id..Remsg.sender_id.user_id, Remsg.sender_id.user_id)
+              redis:set(bot_id.."hrameid"..msg.chat_id..Remsg.sender_id.user_id, msg.sender_id.user_id)
+              redis:set(bot_id.."balcmsrok"..msg.chat_id..Remsg.sender_id.user_id, hrame)
+              redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id, 620, true)
+              bot.sendText(msg.chat_id, msg.id, "المسكين شخصيته طيبة وزرفته "..hrame.." دينار 💵", "md", true, false, false, false, reply_markup)
+              return false
+          end
+
+          local haddd = daddd[math.random(#daddd)]
+          if haddd == "1" then
+              local hrame = math.floor(math.random() * 2000) + 500
+              local ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
+              local ballancope = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+              local zrfne = ballanceed - hrame
+              local zrfnee = ballancope + hrame
+              redis:set(bot_id.."boob"..msg.sender_id.user_id, math.floor(zrfnee))
+              redis:set(bot_id.."boob"..Remsg.sender_id.user_id, math.floor(zrfne))
+              redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id, 620, true)
+              local zoropeo = redis:get(bot_id.."rrfff"..msg.sender_id.user_id) or 0
+              local zoroprod = zoropeo + hrame
+              redis:set(bot_id.."rrfff"..msg.sender_id.user_id, zoroprod)
+              redis:sadd(bot_id.."rrfffid", msg.sender_id.user_id)
+              local ban = bot.getUser(Remsg.sender_id.user_id)
+              local news = ban.first_name and "["..ban.first_name.."](tg://user?id="..ban.id..")" or " لا يوجد اسم"
+              redis:set(bot_id.."msrokid"..msg.chat_id..Remsg.sender_id.user_id, Remsg.sender_id.user_id)
+              redis:set(bot_id.."hrameid"..msg.chat_id..Remsg.sender_id.user_id, msg.sender_id.user_id)
+              redis:set(bot_id.."balcmsrok"..msg.chat_id..Remsg.sender_id.user_id, hrame)
+              redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id, 620, true)
+              bot.sendText(msg.chat_id, msg.id, "زرفته "..hrame.." دينار 💵", "md", true, false, false, false, reply_markup)
+              return false
+          elseif haddd == "2" then
+              redis:setex(bot_id.."polic" .. msg.sender_id.user_id, 620, true)
+              bot.sendText(msg.chat_id, msg.id, "- مسكتك الشرطة وانت تزرف 🚔\n- انحبست 10 دقائق", "md", true, false, false, false, reply_markup)
+              return false
+          elseif haddd == "3" then
+              redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id, 620, true)
+              redis:setex(bot_id.."polic" .. msg.sender_id.user_id, 620, true)
+              bot.sendText(msg.chat_id, msg.id, "- مسكتك الشرطة انت والشخص الي تبي تزرفه 🚔\n- انحبست 10 دقائق", "md", true, false, false, false, reply_markup)
+              return false
+          elseif haddd == "4" then
+              local hrame = math.floor(math.random() * 200) + 100
+              local ballanceed = redis:get(bot_id.."boob"..Remsg.sender_id.user_id) or 0
+              local ballancope = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
+              local zrfne = ballanceed - hrame
+              local zrfnee = ballancope + hrame
+              redis:set(bot_id.."boob"..msg.sender_id.user_id, math.floor(zrfnee))
+              redis:set(bot_id.."boob"..Remsg.sender_id.user_id, math.floor(zrfne))
+              redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id, 620, true)
+              local zoropeo = redis:get(bot_id.."rrfff"..msg.sender_id.user_id) or 0
+              local zoroprod = zoropeo + hrame
+              redis:set(bot_id.."rrfff"..msg.sender_id.user_id, zoroprod)
+              redis:sadd(bot_id.."rrfffid", msg.sender_id.user_id)
+              local ban = bot.getUser(Remsg.sender_id.user_id)
+              local news = ban.first_name and "["..ban.first_name.."](tg://user?id="..ban.id..")" or " لا يوجد اسم"
+              redis:set(bot_id.."msrokid"..msg.chat_id..Remsg.sender_id.user_id, Remsg.sender_id.user_id)
+              redis:set(bot_id.."hrameid"..msg.chat_id..Remsg.sender_id.user_id, msg.sender_id.user_id)
+              redis:set(bot_id.."balcmsrok"..msg.chat_id..Remsg.sender_id.user_id, hrame)
+              redis:setex(bot_id.."hrame" .. Remsg.sender_id.user_id, 620, true)
+              bot.sendText(msg.chat_id, msg.id, "زرفته "..hrame.." دينار 💵", "md", true, false, false, false, reply_markup)
+              return false
+          end
+      else
+          bot.sendText(msg.chat_id, msg.id, "- الشخص ذا ماعنده حساب بنكي", "md", true, false, false, false, reply_markup)
+      end
+  else
+      bot.sendText(msg.chat_id, msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )", "md", true, false, false, false, reply_markup)
+  end
 end
 
-if text and text:match("^شرطه @(%S+)$") or text and text:match("^شرطة @(%S+)$") then
-local UserName = text:match("^شرطه @(%S+)$") or text:match("^شرطة @(%S+)$")
-local UserId_Info = bot.searchPublicChat(UserName)
-if not UserId_Info.id then
-return bot.sendText(msg.chat_id,msg.id,"\n- مافيه حساب كذا ","md",true)
-end
-local UserInfo = bot.getUser(UserId_Info.id)
-if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-return bot.sendText(msg.chat_id,msg.id,"\n- هذا بوت 🤡 ","md",true)  
-end
-if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
-local hrameid = redis:get(bot_id.."hrameid"..msg.chat_id..msg.sender_id.user_id)
-shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
-if shkse == "شريرة" then
-return bot.sendText(msg.chat_id,msg.id, "- شخصيتك شريرة ماتكدر تطلب الشرطة","md",true)
-end
-if redis:get(bot_id.."timehrame" .. hrameid) then
-local hours = redis:ttl(bot_id.."timehrame" .. hrameid)
-local msrokid = redis:get(bot_id.."msrokid"..msg.chat_id..msg.sender_id.user_id)
-local hrameid = redis:get(bot_id.."hrameid"..msg.chat_id..msg.sender_id.user_id)
-local balcmsrok = redis:get(bot_id.."balcmsrok"..msg.chat_id..msg.sender_id.user_id) or 0
-if tonumber(hrameid) == UserId_Info.id and tonumber(msrokid) == msg.sender_id.user_id then
-local ballancehrame = redis:get(bot_id.."boob"..hrameid) or 0
-local ballancmsrok = redis:get(bot_id.."boob"..msrokid) or 0
-ballancehramenow = tonumber(ballancehrame) - tonumber(balcmsrok)
-ballancmsroknow = tonumber(ballancmsrok) + tonumber(balcmsrok)
-redis:set(bot_id.."boob"..hrameid , ballancehramenow)
-redis:set(bot_id.."boob"..msrokid , ballancmsroknow)
-local ban = bot.getUser(hrameid)
-if ban.first_name then
-news = "["..ban.first_name.."](tg://user?id="..ban.id..")"
-else
-news = " لا يوجد اسم"
-end
-redis:setex(bot_id.."polic" .. hrameid,620, true)
-redis:del(bot_id.."msrokid" ..msg.chat_id..msg.sender_id.user_id) 
-redis:del(bot_id.."hrameid" ..msg.chat_id..msg.sender_id.user_id) 
-redis:del(bot_id.."balcmsrok" ..msg.chat_id..msg.sender_id.user_id)
-redis:del(bot_id.."timehrame" ..msg.chat_id..msg.sender_id.user_id)
-bot.sendText(msg.chat_id,msg.id,"- كفو مسكته الشرطة 👨‍✈️\n- الحرامي : "..news.."\n- تم اعادة فلوسك : "..tonumber(balcmsrok).." دينار 💵\n- سيتم سجن الحرامي\n","md",true)
-else
-bot.sendText(msg.chat_id,msg.id,"- تم التحقيق معه وتبين مو هو الحرامي\n- باقي معك "..math.floor(hours).." ثانية\n","md",true)
-end
-end
-else
-bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
-end
-end
-
-if text == 'شرطه' or text == 'الشرطه' or text == 'شرطة' and tonumber(msg.reply_to_message_id) ~= 0 then
-if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
-local Remsg = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
-local UserInfo = bot.getUser(Remsg.sender_id.user_id)
-if UserInfo and UserInfo.type and UserInfo.type.luatele == "userTypeBot" then
-bot.sendText(msg.chat_id,msg.id,"\n*- تون ماعندها حساب بالبنك 🤣*","md",true)
-return false
-end
-local hrameid = redis:get(bot_id.."hrameid"..msg.chat_id..msg.sender_id.user_id)
-shkse = redis:get(bot_id.."shkse"..msg.sender_id.user_id)
-if shkse == "شريرة" then
-return bot.sendText(msg.chat_id,msg.id, "- شخصيتك شريرة ماتكدر تطلب الشرطة","md",true)
-end
-if redis:get(bot_id.."timehrame" .. hrameid) then
-local hours = redis:ttl(bot_id.."timehrame" .. hrameid)
-local msrokid = redis:get(bot_id.."msrokid"..msg.chat_id..msg.sender_id.user_id)
-local hrameid = redis:get(bot_id.."hrameid"..msg.chat_id..msg.sender_id.user_id)
-local balcmsrok = redis:get(bot_id.."balcmsrok"..msg.chat_id..msg.sender_id.user_id) or 0
-if tonumber(hrameid) == Remsg.sender_id.user_id and tonumber(msrokid) == msg.sender_id.user_id then
-local ballancehrame = redis:get(bot_id.."boob"..hrameid) or 0
-local ballancmsrok = redis:get(bot_id.."boob"..msrokid) or 0
-ballancehramenow = tonumber(ballancehrame) - tonumber(balcmsrok)
-ballancmsroknow = tonumber(ballancmsrok) + tonumber(balcmsrok)
-redis:set(bot_id.."boob"..hrameid , ballancehramenow)
-redis:set(bot_id.."boob"..msrokid , ballancmsroknow)
-local ban = bot.getUser(hrameid)
-if ban.first_name then
-news = "["..ban.first_name.."](tg://user?id="..ban.id..")"
-else
-news = " لا يوجد اسم"
-end
-redis:setex(bot_id.."polic" .. hrameid,620, true)
-redis:del(bot_id.."msrokid" ..msg.chat_id..msg.sender_id.user_id) 
-redis:del(bot_id.."hrameid" ..msg.chat_id..msg.sender_id.user_id) 
-redis:del(bot_id.."balcmsrok" ..msg.chat_id..msg.sender_id.user_id) 
-redis:del(bot_id.."timehrame" ..msg.chat_id..msg.sender_id.user_id)
-bot.sendText(msg.chat_id,msg.id,"- كفو مسكته الشرطة 👨‍✈️\n- الحرامي : "..news.."\n- تم اعادة فلوسك : "..tonumber(balcmsrok).." دينار 💵\n- سيتم سجن الحرامي\n","md",true)
-else
-bot.sendText(msg.chat_id,msg.id,"- تم التحقيق معه وتبين مو هو الحرامي\n- باقي معك "..math.floor(hours).." ثانية\n","md",true)
-end
-end
-else
-bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
-end
-end
 if text == 'راتب' or text == 'راتبي' then
 local reply_markup = bot.replyMarkup{
 type = 'inline',data = {
@@ -14954,7 +14894,7 @@ else
 bot.sendText(msg.chat_id,msg.id,"*- الاسم : *( "..(t).." *)*\n*- المعرف : *( "..(u).." *)*\n["..GetBio(UserInfo.id).."]","md",true)  
 end
 end
-if text == 'مبرمج السورس' or text == 'coder' or text == 'المبرمج' then
+if text == 'مبرمج السورس' or text == 'المبرمج' or text == 'المبرمج' then
 local UserId_Info = bot.searchPublicChat("F_T_Y")
 if UserId_Info.id then
 local UserInfo = bot.getUser(UserId_Info.id)
@@ -23778,7 +23718,7 @@ local Text = "*- welcome to the Source TON*\n"
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '- Source TON',url="https://t.me/rsrrsrr"}},
-{{text = '- CoDeR .',url="https://t.me/F_T_Y"}},
+{{text = '- المبرمج .',url="https://t.me/F_T_Y"}},
 }
 https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg.chat_id .. "&photo=https://t.me/rsrrsrr&caption=".. URL.escape(Text).."&photo=0&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
