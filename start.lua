@@ -10430,8 +10430,21 @@ else
 bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
 end
 end
+local function setUserState(msg, state)
+  redis:setex(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id, 60, state)
+end
+
+local function checkAndSendItems(category, items)
+  if redis:get(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id) then
+      redis:del(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id) 
+      bot.sendText(msg.chat_id, msg.id, items, "md", true)  
+      return true
+  end
+  return false
+end
+
 if text == "المتجر" or text == "متجر" then
-  redis:setex(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id, 60, true)
+  setUserState(msg, true)
   bot.sendText(msg.chat_id, msg.id, [[
 – اهلين فيك بمتجر تون
 - يتوفر لدينا حالياً :
@@ -10446,8 +10459,9 @@ if text == "المتجر" or text == "متجر" then
   return false
 end
 
-
+-- تعامل مع الأوامر مباشرة
 if text == "سيارات" then
+  setUserState(msg, true)
   checkAndSendItems("سيارات", [[
 – السيارات المتوفرة لدينا حالياً :
 
@@ -10463,6 +10477,7 @@ if text == "سيارات" then
 مثال : شراء سياره فيلار 2
 ]])
 elseif text == "طيارات" then
+  setUserState(msg, true)
   checkAndSendItems("طيارات", [[
 – الطيارات المتوفرة لدينا حالياً :
 
@@ -10474,6 +10489,7 @@ elseif text == "طيارات" then
 مثال : شراء طياره سفر 2
 ]])
 elseif text == "عقارات" then
+  setUserState(msg, true)
   checkAndSendItems("عقارات", [[
 – العقارات المتوفرة لدينا حالياً :
 
@@ -10485,6 +10501,7 @@ elseif text == "عقارات" then
 مثال : شراء قصر 2
 ]])
 elseif text == "مجوهرات" then
+  setUserState(msg, true)
   checkAndSendItems("مجوهرات", [[
 – المجوهرات المتوفرة لدينا حالياً :
 
