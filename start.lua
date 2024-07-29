@@ -10430,6 +10430,7 @@ else
 bot.sendText(msg.chat_id,msg.id, "- ماعندك حساب بنكي ارسل ↢ ( `انشاء حساب بنكي` )","md",true)
 end
 end
+-- Define functions at the top or in a proper scope
 local function setUserState(msg, state)
   redis:setex(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id, 60, state)
 end
@@ -10443,6 +10444,7 @@ local function checkAndSendItems(category, items)
   return false
 end
 
+-- Process messages
 if text == "المتجر" or text == "متجر" then
   setUserState(msg, true)
   bot.sendText(msg.chat_id, msg.id, [[
@@ -10459,7 +10461,7 @@ if text == "المتجر" or text == "متجر" then
   return false
 end
 
--- تعامل مع الأوامر مباشرة
+-- Handle categories
 if text == "سيارات" then
   setUserState(msg, true)
   checkAndSendItems("سيارات", [[
