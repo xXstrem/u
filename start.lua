@@ -10446,18 +10446,6 @@ if text == "المتجر" or text == "متجر" then
   return false
 end
 
-if text == "سيارات" or text == "طيارات" or text == "عقارات" or text == "مجوهرات" then
-  redis:setex(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id, 60, true)
-end
-
-local function checkAndSendItems(category, items)
-  if redis:get(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id) then
-      redis:del(bot_id.."marad" .. msg.chat_id .. ":" .. msg.sender_id.user_id) 
-      bot.sendText(msg.chat_id, msg.id, items, "md", true)  
-      return true
-  end
-  return false
-end
 
 if text == "سيارات" then
   checkAndSendItems("سيارات", [[
