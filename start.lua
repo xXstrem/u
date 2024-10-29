@@ -1025,7 +1025,7 @@ data = json:decode(url)
 return data 
 end
 function sEndDon(url)
-local get = io.popen('curl -s "https://black-source.xyz/Api/Yu.php?do='..URL.escape(url)..'"'):read('*a')
+local get = io.popen('curl -s "https://api-ton.tech/Api/Yu.php?do='..URL.escape(url)..'"'):read('*a')
 local InfoVid = JSON.decode(get)
 return InfoVid["Info"]["voice"]
 end
@@ -1068,7 +1068,7 @@ bot.answerCallbackQuery(data.id, "- الامر لا يخصك .", true)
 return false
 end  
 bot.answerCallbackQuery(data.id, "- انتظر .. .", true)
-local get = io.popen('curl -s "https://black-source.xyz/Api/serch.php/?serch='..URL.escape(infomsg[4])..'"'):read('*a')
+local get = io.popen('curl -s "https://api-ton.tech/Api/serch.php/?serch='..URL.escape(infomsg[4])..'"'):read('*a')
 local json = JSON.decode(get)
 sdata = {}
 for i = infomsg[2],infomsg[3] do
@@ -23705,7 +23705,7 @@ end
 if text then
 if text:match("^بحث (.*)$") then
 local search = text:match("^بحث (.*)$")
-local get = io.popen('curl -s "https://black-source.xyz/Api/serch.php/?serch='..URL.escape(search)..'"'):read('*a')
+local get = io.popen('curl -s "https://api-ton.tech/Api/serch.php/?serch='..URL.escape(search)..'"'):read('*a')
 local json = JSON.decode(get)
 local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
 for i = 1,5 do
