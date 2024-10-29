@@ -6,6 +6,7 @@ json    = dofile("./libs/JSON.lua")
 URL     = dofile("./libs/url.lua")
 http    = require("socket.http")
 https   = require("ssl.https")
+
 -------------------------------------------------------------------
 whoami = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '')
 uptime=io.popen([[echo `uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"D,",h+0,"H,",m+0,"M."}'`]]):read('*a'):gsub('[\n\r]+', '')
@@ -23703,25 +23704,33 @@ return bot.sendText(msg.chat_id,msg.id,"["..list[math.random(#list)].."]","md",t
 end  
 ----------------------------------------------------------------------------------------------------
 if text then
-if text:match("^بحث (.*)$") then
-local search = text:match("^بحث (.*)$")
-local get = io.popen('curl -s "https://api-ton.tech/Api/serch.php/?serch='..URL.escape(search)..'"'):read('*a')
-local json = JSON.decode(get)
-local datar = {data = {{text = "➡️" , data ="serchy#"..msg.sender_id.user_id.."#7#11#"..search.."#"..msg.id}}}
-for i = 1,5 do
-datar[i] = {{text =json['Info']['Title'][i],data ="DownloadY#"..msg.sender_id.user_id.."#"..json['Info']['Id'][i].."#"..msg.id}}
-datar[i] = {{text = json.Info.Title[i],data ="DownloadY#"..msg.sender_id.user_id.."#"..json.Info.Id[i].."#"..msg.id}}
-end
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = datar
-}
-bot.sendText(msg.chat_id,msg.id,'- نتائج البحث لـ "'..search..'"',"md",false, false, false, false, reply_markup)
-end
+    if text:match("^بحث (.*)$") then
+        local search = text:match("^بحث (.*)$")
+        local get = io.popen('curl -s "https://api-ton.tech/Api/serch.php/?serch='..URL.escape(search)..'"'):read('*a')
+        local json = JSON.decode(get)
+
+        -- تأكد من أن json يحتوي على بيانات قبل محاولة الوصول إليها
+        if json and json.Info and json.Info.Title and json.Info.Id then
+            local datar = {data = {{text = "➡️" , data = "serchy#" .. msg.sender_id.user_id .. "#7#11#" .. search .. "#" .. msg.id}}}
+            
+            for i = 1,5 do
+                if json.Info.Title[i] and json.Info.Id[i] then
+                    datar[i] = {{text = json.Info.Title[i], data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. json.Info.Id[i] .. "#" .. msg.id}}
+                end
+            end
+
+            local reply_markup = bot.replyMarkup{
+                type = 'inline',
+                data = datar
+            }
+            
+            bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "' .. search .. '"', "md", false, false, false, false, reply_markup)
+        else
+            bot.sendText(msg.chat_id, msg.id, "تعذر الحصول على نتائج البحث، الرجاء المحاولة مرة أخرى.")
+        end
+    end
 end
 
----------------------------------------------------------------------------------------------------
-end
 ----------------------------------------------------------------------------------------------------
 -- نهايه التفعيل
 
