@@ -1042,25 +1042,41 @@ user_id = data.sender_user_id
 chat_id = data.chat_id
 msg_id = data.message_id
 if Text and Text:match("^DownloadY#(.*)#(.*)#(.*)") then
-local infomsg = {Text:match("^DownloadY#(.*)#(.*)#(.*)")}
-if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
-bot.answerCallbackQuery(data.id, "- الامر لا يخصك .", true)
-return false
-end  
-bot.editMessageText(chat_id,msg_id,"- انتظر قليلا من فضلك `. .. .`", 'md')
-if sEndDon(infomsg[2]) == "not" then
-bot.editMessageText(chat_id,msg_id,"*- عذراً حدث خطأ ما .*", 'md')
-else
-send("sendVoice",{
-chat_id=chat_id,
-voice=sEndDon(infomsg[2]),
-caption=("- تم تحميل الاغنيه بنجاح ."),
-reply_to_message_id=infomsg[3],
-parse_mode="markdown",
----reply_markup=markup(nil,{{{text = 'ʙʟᴀᴄᴋ',url="t.me/UBBBB"}}})
-})
-return bot.editMessageText(chat_id,msg_id,'- تم التحميل ✔')
-end
+    local infomsg = {Text:match("^DownloadY#(.*)#(.*)#(.*)")}
+    if tonumber(data.sender_user_id) ~= tonumber(infomsg[1]) then  
+        bot.answerCallbackQuery(data.id, "- الامر لا يخصك .", true)
+        return false
+    end  
+    bot.editMessageText(chat_id, msg_id, "- جاري التحميل ...", 'md')
+    local url = infomsg[2]
+    local type = url:find("%.mp4") and "video" or "voice"
+    local temp_file = "temp_"..os.time()..(type == "video" and ".mp4" or ".ogg")
+    os.execute('curl -s "'..url..'" -o "'..temp_file..'"')
+    local f = io.open(temp_file, "rb")
+    if f then
+        f:close()
+        if type == "video" then
+            send("sendVideo", {
+                chat_id = chat_id,
+                video = temp_file,
+                caption = "- تم تحميل الفيديو بنجاح.",
+                reply_to_message_id = infomsg[3],
+                parse_mode = "markdown"
+            })
+        else
+            send("sendVoice", {
+                chat_id = chat_id,
+                voice = temp_file,
+                caption = "- تم تحميل الصوت بنجاح.",
+                reply_to_message_id = infomsg[3],
+                parse_mode = "markdown"
+            })
+        end
+        os.remove(temp_file)
+        return bot.editMessageText(chat_id, msg_id, '- تم التحميل ✔')
+    else
+        bot.editMessageText(chat_id, msg_id, "*- عذراً حدث خطأ ما .*", 'md')
+    end
 end
 if Text and Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)") then
 local infomsg = {Text:match("^serchy#(.*)#(.*)#(.*)#(.*)#(.*)")}
@@ -23706,31 +23722,20 @@ end
 if text then
     if text:match("^بحث (.*)$") then
         local search = text:match("^بحث (.*)$")
-        local get = io.popen('curl -s "https://api-ton.tech/Api/serch.php/?serch='..URL.escape(search)..'"'):read('*a')
+        local get = io.popen('curl -s "http://20.39.241.153:5000/download?url='..URL.escape(search)..'"'):read('*a')
         local json = JSON.decode(get)
-
-        -- تأكد من أن json يحتوي على بيانات قبل محاولة الوصول إليها
-        if json and json.Info and json.Info.Title and json.Info.Id then
-            local datar = {data = {{text = "➡️" , data = "serchy#" .. msg.sender_id.user_id .. "#7#11#" .. search .. "#" .. msg.id}}}
-            
-            for i = 1,5 do
-                if json.Info.Title[i] and json.Info.Id[i] then
-                    datar[i] = {{text = json.Info.Title[i], data = "DownloadY#" .. msg.sender_id.user_id .. "#" .. json.Info.Id[i] .. "#" .. msg.id}}
-                end
-            end
-
-            local reply_markup = bot.replyMarkup{
-                type = 'inline',
-                data = datar
-            }
-            
-            bot.sendText(msg.chat_id, msg.id, '- نتائج البحث لـ "' .. search .. '"', "md", false, false, false, false, reply_markup)
-        else
-            bot.sendText(msg.chat_id, msg.id, "تعذر الحصول على نتائج البحث، الرجاء المحاولة مرة أخرى.")
-        end
+        -- يعرض زر تحميل الصوت فقط
+        local datar = {
+            { {text = "🎵 تحميل الصوت", data = "DownloadY#"..msg.sender_id.user_id.."#"..json.audio_url.."#"..msg.id} },
+            { {text = "🎬 تحميل الفيديو", data = "DownloadY#"..msg.sender_id.user_id.."#"..json.video_url.."#"..msg.id} }
+        }
+        local reply_markup = bot.replyMarkup{
+            type = 'inline',
+            data = datar
+        }
+        bot.sendPhoto(msg.chat_id, msg.id, json.thumbnail, '- نتائج البحث لـ "'..search..'" :\n*'..json.title..'*', "md", false, false, false, false, reply_markup)
     end
 end
-
 ----------------------------------------------------------------------------------------------------
 -- نهايه التفعيل
 
