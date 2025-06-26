@@ -4688,6 +4688,7 @@ text = msg.content.text.text
 else 
 text = nil
 end
+end
 ----------------------------------------------------------------------------------------------------
 if devB(msg.sender_id.user_id) then
 if redis:get(bot_id..":set:"..msg.chat_id..":send") then
