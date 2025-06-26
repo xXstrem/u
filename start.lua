@@ -23800,115 +23800,117 @@ https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. ms
 end
 ----------------------------------------------------------------------------------------------------
 if text and text:match("^تعيين عدد الاعضاء (%d+)$") then
-if not devB(msg.sender_id.user_id) then 
-return bot.sendText(msg.chat_id,msg.id,'\n*- هذا الامر يخص المطور الاساسي * ',"md",true)  
-end
-redis:set(bot_id..'Num:Add:Bot',text:match("تعيين عدد الاعضاء (%d+)$") ) 
-bot.sendText(msg.chat_id,msg.id,'*- تم تعيين عدد اعضاء تفعيل البوت\n اكثر من ( '..text:match("تعيين عدد الاعضاء (%d+)$")..' ) عضو *',"md",true)  
+  if not devB(msg.sender_id.user_id) then 
+    return bot.sendText(msg.chat_id,msg.id,'\n*- هذا الامر يخص المطور الاساسي * ',"md",true)  
+  end
+  redis:set(bot_id..'Num:Add:Bot',text:match("تعيين عدد الاعضاء (%d+)$") ) 
+  bot.sendText(msg.chat_id,msg.id,'*- تم تعيين عدد اعضاء تفعيل البوت\n اكثر من ( '..text:match("تعيين عدد الاعضاء (%d+)$")..' ) عضو *',"md",true)  
 end
 
 if text and text:match("^حظر كروب (.*)$") then
-if not devB(msg.sender_id.user_id) then 
-return bot.sendText(msg.chat_id,msg.id,'\n*- هذا الامر يخص المطور الاساسي * ',"md",true)  
+  if not devB(msg.sender_id.user_id) then 
+    return bot.sendText(msg.chat_id,msg.id,'\n*- هذا الامر يخص المطور الاساسي * ',"md",true)  
+  end
+  local txx = text:match("^حظر كروب (.*)$")
+  if txx:match("^-100(%d+)$") then
+    redis:sadd(bot_id..'ban:online',txx)
+    bot.sendText(msg.chat_id,msg.id,'\n- تم حظر المجموعه من البوت ',"md",true)  
+  else
+    bot.sendText(msg.chat_id,msg.id,'\n- اكتب ايدي المجموعه بشكل صحيح ',"md",true)  
+  end
 end
-local txx = text:match("^حظر كروب (.*)$")
-if txx:match("^-100(%d+)$") then
-redis:sadd(bot_id..'ban:online',txx)
-bot.sendText(msg.chat_id,msg.id,'\n- تم حظر المجموعه من البوت ',"md",true)  
-else
-bot.sendText(msg.chat_id,msg.id,'\n- اكتب ايدي المجموعه بشكل صحيح ',"md",true)  
-end
-end
+
 if text and text:match("^الغاء حظر كروب (.*)$") then
-if not devB(msg.sender_id.user_id) then 
-return bot.sendText(msg.chat_id,msg.id,'\n*- هذا الامر يخص المطور الاساسي * ',"md",true)  
-end
-local txx = text:match("^الغاء حظر كروب (.*)$")
-if txx:match("^-100(%d+)$") then
-redis:srem(bot_id..'ban:online',txx)
-bot.sendText(msg.chat_id,msg.id,'\n- تم الغاء حظر المجموعه من البوت ',"md",true)  
-else
-bot.sendText(msg.chat_id,msg.id,'\n- اكتب ايدي المجموعه بشكل صحيح ',"md",true)  
-end
+  if not devB(msg.sender_id.user_id) then 
+    return bot.sendText(msg.chat_id,msg.id,'\n*- هذا الامر يخص المطور الاساسي * ',"md",true)  
+  end
+  local txx = text:match("^الغاء حظر كروب (.*)$")
+  if txx:match("^-100(%d+)$") then
+    redis:srem(bot_id..'ban:online',txx)
+    bot.sendText(msg.chat_id,msg.id,'\n- تم الغاء حظر المجموعه من البوت ',"md",true)  
+  else
+    bot.sendText(msg.chat_id,msg.id,'\n- اكتب ايدي المجموعه بشكل صحيح ',"md",true)  
+  end
 end
 
 if text == 'تفعيل' then
-if msg.can_be_deleted_for_all_users == false then
-bot.sendText(msg.chat_id,msg.id,"*- عذراً البوت ليس ادمن في المجموعه .*","md",true)  
-return false
+  if msg.can_be_deleted_for_all_users == false then
+    bot.sendText(msg.chat_id,msg.id,"*- عذراً البوت ليس ادمن في المجموعه .*","md",true)  
+    return false
+  end
+  sm = bot.getChatMember(msg.chat_id,msg.sender_id.user_id)
+  if not developer(msg) then
+    if sm.status.luatele ~= "chatMemberStatusCreator" and sm.status.luatele ~= "chatMemberStatusAdministrator" then
+      bot.sendText(msg.chat_id,msg.id,"*- عذراً يجب أنْ تكون مشرف او مالك المجموعه .*","md",true)  
+      return false
+    end
+  end
+  if sm.status.luatele == "chatMemberStatusCreator" then
+    redis:sadd(bot_id..":"..msg.chat_id..":Status:Creator",msg.sender_id.user_id)
+  else
+    redis:sadd(bot_id..":"..msg.chat_id..":Status:Administrator",msg.sender_id.user_id)
+  end
+  if redis:sismember(bot_id..":Groups",msg.chat_id) then
+    bot.sendText(msg.chat_id,msg.id,'*- تم تفعيل المجموعه سابقا* .',"md",true)  
+    return false
+  else
+    Get_Chat = bot.getChat(msg.chat_id)
+    Info_Chats = bot.getSupergroupFullInfo(msg.chat_id)
+    local reply_markup = bot.replyMarkup{
+      type = 'inline',
+      data = {
+        {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
+        {{text = '- Source TON',url="t.me/rsrrsrr"}},
+      }
+    }
+    UserInfo = bot.getUser(msg.sender_id.user_id).first_name
+    bot.sendText(sudoid,0,'*\n- تم تفعيل مجموعه جديده \n- بواسطه : (*['..UserInfo..'](tg://user?id='..msg.sender_id.user_id..')*)\n- معلومات المجموعه :\n- عدد الاعضاء : '..Info_Chats.member_count..'\n- عدد الادمنيه : '..Info_Chats.administrator_count..'\n- عدد المطرودين : '..Info_Chats.banned_count..'\n- عدد المقيدين : '..Info_Chats.restricted_count..'*',"md", true, false, false, false, reply_markup)
+    bot.sendText(msg.chat_id,msg.id,'*- تم تفعيل المجموعه بنجاح .*',"md", true, false, false, false, reply_markup)
+    redis:sadd(bot_id..":Groups",msg.chat_id)
+  end
 end
-sm = bot.getChatMember(msg.chat_id,msg.sender_id.user_id)
-if not developer(msg) then
-if sm.status.luatele ~= "chatMemberStatusCreator" and sm.status.luatele ~= "chatMemberStatusAdministrator" then
-bot.sendText(msg.chat_id,msg.id,"*- عذراً يجب أنْ تكون مشرف او مالك المجموعه .*","md",true)  
-return false
-end
-end
-if sm.status.luatele == "chatMemberStatusCreator" then
-redis:sadd(bot_id..":"..msg.chat_id..":Status:Creator",msg.sender_id.user_id)
-else
-redis:sadd(bot_id..":"..msg.chat_id..":Status:Administrator",msg.sender_id.user_id)
-end
-if redis:sismember(bot_id..":Groups",msg.chat_id) then
- bot.sendText(msg.chat_id,msg.id,'*- تم تفعيل المجموعه سابقا* .',"md",true)  
-return false
-else
-Get_Chat = bot.getChat(msg.chat_id)
-Info_Chats = bot.getSupergroupFullInfo(msg.chat_id)
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- Source TON',url="t.me/rsrrsrr"}},
-}
-}
-UserInfo = bot.getUser(msg.sender_id.user_id).first_name
-bot.sendText(sudoid,0,'*\n- تم تفعيل مجموعه جديده \n- بواسطه : (*['..UserInfo..'](tg://user?id='..msg.sender_id.user_id..')*)\n- معلومات المجموعه :\n- عدد الاعضاء : '..Info_Chats.member_count..'\n- عدد الادمنيه : '..Info_Chats.administrator_count..'\n- عدد المطرودين : '..Info_Chats.banned_count..'\n- عدد المقيدين : '..Info_Chats.restricted_count..'*',"md", true, false, false, false, reply_markup)
-bot.sendText(msg.chat_id,msg.id,'*- تم تفعيل المجموعه بنجاح .*',"md", true, false, false, false, reply_markup)
-redis:sadd(bot_id..":Groups",msg.chat_id)
-end
-end
+
 if text == 'تعطيل' then
-if msg.can_be_deleted_for_all_users == false then
-bot.sendText(msg.chat_id,msg.id,"*- عذراً البوت ليس ادمن في المجموعه .*","md",true)  
-return false
-end
-sm = bot.getChatMember(msg.chat_id,msg.sender_id.user_id)
-if not developer(msg) then
-if sm.status.luatele ~= "chatMemberStatusCreator" then
-bot.sendText(msg.chat_id,msg.id,"*- عذراً يجب أنْ تكون مالك المجموعه فقط .*","md",true)  
-return false
-end
-end
-if redis:sismember(bot_id..":Groups",msg.chat_id) then
-Get_Chat = bot.getChat(msg.chat_id)
-Info_Chats = bot.getSupergroupFullInfo(msg.chat_id)
-local reply_markup = bot.replyMarkup{
-type = 'inline',
-data = {
-{{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
-{{text = '- Source TON',url="https://t.me/rsrrsrr"}},
-}
-}
-UserInfo = bot.getUser(msg.sender_id.user_id).first_name
-bot.sendText(sudoid,0,'*\n- تم تعطيل المجموعه التاليه : \n- بواسطه : (*['..UserInfo..'](tg://user?id='..msg.sender_id.user_id..')*)\n- معلومات المجموعه :\n- عدد الاعضاء : '..Info_Chats.member_count..'\n- عدد الادمنيه : '..Info_Chats.administrator_count..'\n- عدد المطرودين : '..Info_Chats.banned_count..'\n- عدد المقيدين : '..Info_Chats.restricted_count..'*',"md", true, false, false, false, reply_markup)
-bot.sendText(msg.chat_id,msg.id,'*- تم تعطيل المجموعه بنجاح .*',"md",true, false, false, false, reply_markup)
-redis:srem(bot_id..":Groups",msg.chat_id)
-local keys = redis:keys(bot_id..'*'..'-100'..data.supergroup.id..'*')
-redis:del(bot_id..":"..msg.chat_id..":Status:Creator")
-redis:del(bot_id..":"..msg.chat_id..":Status:BasicConstructor")
-redis:del(bot_id..":"..msg.chat_id..":Status:Constructor")
-redis:del(bot_id..":"..msg.chat_id..":Status:Owner")
-redis:del(bot_id..":"..msg.chat_id..":Status:Administrator")
-redis:del(bot_id..":"..msg.chat_id..":Status:Vips")
-redis:del(bot_id.."List:Command:"..msg.chat_id)
-for i = 1, #keys do 
-redis:del(keys[i])
-end
-return false
-else
-bot.sendText(msg.chat_id,msg.id,'*- المجموعه معطله بالفعل .*',"md", true)
-end
+  if msg.can_be_deleted_for_all_users == false then
+    bot.sendText(msg.chat_id,msg.id,"*- عذراً البوت ليس ادمن في المجموعه .*","md",true)  
+    return false
+  end
+  sm = bot.getChatMember(msg.chat_id,msg.sender_id.user_id)
+  if not developer(msg) then
+    if sm.status.luatele ~= "chatMemberStatusCreator" then
+      bot.sendText(msg.chat_id,msg.id,"*- عذراً يجب أنْ تكون مالك المجموعه فقط .*","md",true)  
+      return false
+    end
+  end
+  if redis:sismember(bot_id..":Groups",msg.chat_id) then
+    Get_Chat = bot.getChat(msg.chat_id)
+    Info_Chats = bot.getSupergroupFullInfo(msg.chat_id)
+    local reply_markup = bot.replyMarkup{
+      type = 'inline',
+      data = {
+        {{text = Get_Chat.title, url = Info_Chats.invite_link.invite_link}},
+        {{text = '- Source TON',url="https://t.me/rsrrsrr"}},
+      }
+    }
+    UserInfo = bot.getUser(msg.sender_id.user_id).first_name
+    bot.sendText(sudoid,0,'*\n- تم تعطيل المجموعه التاليه : \n- بواسطه : (*['..UserInfo..'](tg://user?id='..msg.sender_id.user_id..')*)\n- معلومات المجموعه :\n- عدد الاعضاء : '..Info_Chats.member_count..'\n- عدد الادمنيه : '..Info_Chats.administrator_count..'\n- عدد المطرودين : '..Info_Chats.banned_count..'\n- عدد المقيدين : '..Info_Chats.restricted_count..'*',"md", true, false, false, false, reply_markup)
+    bot.sendText(msg.chat_id,msg.id,'*- تم تعطيل المجموعه بنجاح .*',"md",true, false, false, false, reply_markup)
+    redis:srem(bot_id..":Groups",msg.chat_id)
+    local keys = redis:keys(bot_id..'*'..'-100'..data.supergroup.id..'*')
+    redis:del(bot_id..":"..msg.chat_id..":Status:Creator")
+    redis:del(bot_id..":"..msg.chat_id..":Status:BasicConstructor")
+    redis:del(bot_id..":"..msg.chat_id..":Status:Constructor")
+    redis:del(bot_id..":"..msg.chat_id..":Status:Owner")
+    redis:del(bot_id..":"..msg.chat_id..":Status:Administrator")
+    redis:del(bot_id..":"..msg.chat_id..":Status:Vips")
+    redis:del(bot_id.."List:Command:"..msg.chat_id)
+    for i = 1, #keys do 
+      redis:del(keys[i])
+    end
+    return false
+  else
+    bot.sendText(msg.chat_id,msg.id,'*- المجموعه معطله بالفعل .*',"md", true)
+  end
 end
 ----------------------------------------------------------------------------------------------------
 end --- end Run
